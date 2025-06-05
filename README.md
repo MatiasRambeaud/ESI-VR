@@ -7,7 +7,7 @@ Integrantes:
 *Cadima Tiziana
 *Vicente Tiago
 *Alveal Pedro
-*Cancio Donato
+*Cancio Donatto
 *Silman Agustin
 *Becerra Maximo
 
