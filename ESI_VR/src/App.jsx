@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import PerfilUsuario from "./components/views/PerfilUsuario";
 
 function App() {
     return (
-        <h1>ola</h1>
+        <PerfilUsuario/>
     );
 }
 
