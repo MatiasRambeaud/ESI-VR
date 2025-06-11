@@ -1,118 +1,75 @@
 .perfil-contenedor {
-  background-color: #eee8aa;
-  min-height: 100vh;
-  font-family: 'Comic Sans MS', cursive;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  position: relative;
+    background-color: #eee8aa;
+    min-height: 100vh;
+    font-family: 'Comic Sans MS', cursive;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
 }
 
 .perfil-encabezado,
 .perfil-cuerpo {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  border-radius: 2rem;
-  padding: 1.5rem 2rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 2rem;
+    padding: 1.5rem 2rem;
 }
 
 .perfil-encabezado {
-  background-color: #aee0df;
-  border-radius: 2rem 2rem 0 0;
-  text-align: center;
-  font-size: 1.5rem;
+    background-color: #aee0df;
+    border-radius: 2rem 2rem 0 0;
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 .perfil-cuerpo {
-  background-color: #fda4af;
-  border-radius: 0 0 2rem 2rem;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+    background-color: #fda4af;
+    border-radius: 0 0 2rem 2rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 .foto-marco {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 2px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background-color: white;
-  margin: 0 auto;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: white;
+    margin: 0 auto;
 }
 
 .perfil-foto {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
 }
 
 .campo {
-  background-color: #fef9c3;
-  border-radius: 1rem;
-  padding: 0.5rem 1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.input {
-  width: 100%;
-  border: none;
-  background: transparent;
-  font-size: 1rem;
-  margin-top: 0.25rem;
-  outline: none;
-}
-
-.botones-edicion {
-  display: flex;
-  gap: 1rem;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.btn-guardar {
-  background-color: #bbf7d0;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.btn-cancelar {
-  background-color: #fef08a;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.btn-editar {
-  background-color: #fde68a;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
+    background-color: #fef9c3;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .btn-cerrar {
-  background-color: #93c5fd;
-  padding: 0.75rem 1rem;
-  border-radius: 1rem;
-  width: 100%;
-  font-weight: bold;
-  border: 1px solid black;
-  font-size: 1.1rem;
-  cursor: pointer;
+    background-color: #93c5fd;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    font-weight: bold;
+    border: 1px solid black;
+    font-size: 1.1rem;
+    cursor: pointer;
 }
