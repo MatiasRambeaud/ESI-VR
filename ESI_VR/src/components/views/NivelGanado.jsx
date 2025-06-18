@@ -1,5 +1,4 @@
 import React from 'react';
-import './CompletionScreen.css';
 import "./css/BaseVistas.css";
 import "./css/NivelGanado.css";
 
