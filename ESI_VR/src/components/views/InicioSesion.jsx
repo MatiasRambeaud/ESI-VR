@@ -1,7 +1,7 @@
 // src/components/Login.jsx
 import { useState } from 'react';
 import "./css/BaseVistas.css";
-import "./css/InicioSesion.css";
+import "./css/iniciosesion.css";
 
 export default function Login() {
   const [mensaje, setMensaje] = useState('');

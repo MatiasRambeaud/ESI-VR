@@ -20,10 +20,7 @@ const TeEquivocaste = () => {
             src="/cara-triste.png"
             alt="cara triste"
             className="cara-fondo"
-            style={{
-              top: ${60 + i * 40}px,
-              left: i < 3 ? "20px" : "calc(100% - 60px)",
-            }}
+            
           />
         ))}
 

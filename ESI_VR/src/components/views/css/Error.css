@@ -27,7 +27,6 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background-image: url('/ESI_VR/public/img/alerta-icono.png');
     background-repeat: repeat;
     background-size: 60px 60px;
     transform: rotate(30deg);
