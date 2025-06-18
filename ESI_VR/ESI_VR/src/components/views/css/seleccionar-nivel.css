@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f1b3;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background-color: #fcaeae;
+  border-radius: 5% 5% 5% 5%;
+  padding: 20px;
+  width: 360px;
+  height: 440px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.emoji {
+  font-size: 2.2rem;
+}
+
+.title {
+  font-size: 2.2rem;
+  display: flex;
+  gap: 5px;
+  margin: 0;
+}
+
+.letra.e {
+  color: green;
+}
+.letra.s {
+  color: red;
+}
+.letra.i {
+  color: orange;
+}
+
+.btn {
+  padding: 16px;
+  font-size: 1.3rem;
+  border: 2px solid #333;
+  border-radius: 12px;
+  background-color: #d6f6f2;
+  margin: 10px 0;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn.green {
+  background-color: #4fe084;
+  color: white;
+}
+
+.avatar {
+  width: 100px;
+  margin: 10px auto 0;
+}
+
+footer {
+  background-color: #f98b3a;
+  width: 332px;
+  padding: 30px;
+  border-radius: 0 0 10px 10px;
+  text-align: center;
+  margin-top: 100px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 45px;
+  height: 45px;
+}

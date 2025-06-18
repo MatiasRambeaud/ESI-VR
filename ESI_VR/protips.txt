@@ -1,0 +1,6 @@
+Tailwind.com y MaterialUI.com para copiar formularios y otras cosas de UI ya hechas bien facha.
+
+Navigate sirve para enviar info y dirigir a una direccion asignada con Route.
+Location sirve para recibir la info y asignar el valor recibido a una variable para despues mostrarlo.
+
+State sirve para revisar si una variable ya esta asignada o si esta vacia, si esta vacia se hace el protocolo default de asignacion que vos configuas, sino sigue derecho (si tiene valor).
