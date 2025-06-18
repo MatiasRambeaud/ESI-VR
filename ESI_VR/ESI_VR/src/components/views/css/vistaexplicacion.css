@@ -1,0 +1,103 @@
+.mobile-container {
+  max-width: 375px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: #fffbe0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Comic Sans MS', cursive;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  position: relative;
+  padding-top: 60px;
+}
+
+.btn-volver {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: black; /* texto y flecha en negro */
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.contenedor {
+  background-color: #fda4af;
+  margin: 0 10px;
+  padding: 30px 15px;
+  border-radius: 25px;
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cuadro-explicacion {
+  background-color: #d9f99d;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 40px 20px; 
+  margin-bottom: 20px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.texto-explicacion {
+  font-size: 1.5rem;
+  color: black;
+  text-align: center;
+}
+
+.personajes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.avatar {
+  width: 80px;
+  height: auto;
+}
+
+.btn {
+  background-color: #d6f6f2;
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  margin: 0 10px;
+  cursor: pointer;
+  width: auto;
+  font-weight: bold;
+}
+
+.btn.green {
+  background-color: #4fe084;
+  color: white;
+}
+
+.logo {
+  background-color: #f98b3a;
+  color: black;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.logo-mg {
+  width: 50px;
+  display: block;
+  margin: 0 auto 10px;
+}

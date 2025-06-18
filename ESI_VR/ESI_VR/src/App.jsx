@@ -5,7 +5,7 @@ import Error from "/components/views/Error";
 import InicioSesion from "/components/views/InicioSesion";
 import TeEquivocaste from "/components/views/TeEquivocaste";
 import SeleccionNivel from "/components/views/SeleccionNivel";
-
+import VistaExplicacion from "./components/views/vistaexplicacion";
 function App() {
     return (
         <PerfilUsuario/>
