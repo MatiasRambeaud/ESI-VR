@@ -6,6 +6,8 @@ import Error from "/components/views/Error";
 =======
 import InicioSesion from "/components/views/InicioSesion";
 >>>>>>> b69170ac0b6757baeaaf60dd493110e993c7e41f
+import SeleccionNivel from "/components/views/SeleccionNivel";
+
 function App() {
     return (
         <PerfilUsuario/>
@@ -26,6 +28,10 @@ function App() {
 
 function App() {
   return <InicioSesion />;
+}
+
+function App() {
+  return <SeleccionNivel/>;
 }
 
 
