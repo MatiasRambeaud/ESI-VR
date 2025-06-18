@@ -1,5 +1,4 @@
 import React from 'react';
-
 import "./css/BaseVistas.css";
 import "./css/NivelGanado.css";
 
@@ -14,12 +13,7 @@ const CompletionScreen = ({ onRestart, onShowExplanation }) => {
 
                 {/* Personaje simple hecho en HTML y CSS */}
                 <div className="character">
-                    <div className="head"></div>
-                    <div className="arms">
-                        <div className="arm"></div>
-                        <div className="arm"></div>
-                    </div>
-                    <div className="body"></div>
+                  <img src="ESI_VR\public\img\nivelganado.png" alt="Niña logro" className="nina-img" />
                 </div>
 
                 <button className="explanationButton" onClick={onShowExplanation}>
