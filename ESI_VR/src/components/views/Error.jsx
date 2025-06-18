@@ -16,7 +16,7 @@ const Error = () => {
             <div className="error-caja">
                 <div className="error-titulo">¡ERROR!</div>
                 <img
-                    src="/imagenes/error/error.png"
+                    src="/ESI_VR/public/img/error.png"
                     alt="error"
                     className="error-imagen"
                 />
