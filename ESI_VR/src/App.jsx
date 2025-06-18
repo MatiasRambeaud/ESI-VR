@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PerfilUsuario from "./components/views/PerfilUsuario";
-import NivelGanado from "/components/views/NivelGanado";
-<<<<<<< HEAD
+import NivelGanado from "/components/views/NivelGanado"
 import Error from "/components/views/Error";
-=======
 import InicioSesion from "/components/views/InicioSesion";
->>>>>>> b69170ac0b6757baeaaf60dd493110e993c7e41f
+import TeEquivocaste from "/components/views/TeEquivocaste";
 import SeleccionNivel from "/components/views/SeleccionNivel";
 
 function App() {
@@ -33,6 +31,10 @@ function App() {
 function App() {
   return <SeleccionNivel/>;
 }
+
+function App() {
+    return <TeEquivocaste/>;
+  }
 
 
 
