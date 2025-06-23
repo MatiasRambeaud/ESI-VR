@@ -1,16 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import PerfilUsuario from "./components/views/PerfilUsuario";
-import NivelGanado from "./components/views/NivelGanado"
-import Error from "./components/views/Error";
-import InicioSesion from "./components/views/InicioSesion";
-import TeEquivocaste from "./components/views/TeEquivocaste";
-import SeleccionNivel from "./components/views/SeleccionNivel";
-import VistaExplicacion from "./components/views/vistaexplicacion";
 
-function App() {
+import { RouterVistas } from "./components/routers/RouterVistas";
+
+export default function App() {
     return (
-        <PerfilUsuario/>
+        <RouterVistas />
     );
 }
-
-export default App;
