@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RouterBase from "./RouterBase"; 
 import PerfilUsuario from "../views/PerfilUsuario";
 import NivelGanado from "../views/NivelGanado";
 import Error from "../views/Error";
@@ -7,19 +7,19 @@ import TeEquivocaste from "../views/TeEquivocaste";
 import SeleccionNivel from "../views/SeleccionNivel";
 import VistaExplicacion from "../views/vistaexplicacion";
 
-export function RouterVistas() {
+export default class RouterVistas extends RouterBase {
+  init() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/perfil" element={<PerfilUsuario />} />
-                <Route path="/nivel-ganado" element={<NivelGanado />} />
-                <Route path="/error" element={<Error />} />
-                <Route path="/inicio" element={<InicioSesion />} />
-                <Route path="/te-equivocaste" element={<TeEquivocaste />} />
-                <Route path="/seleccion-nivel" element={<SeleccionNivel />} />
-                <Route path="/explicacion" element={<VistaExplicacion />} />
-                <Route path="*" element={<Error />} />
-            </Routes>
-        </BrowserRouter>
+      <>
+        {this.get("/perfil", <PerfilUsuario />)}
+        {this.get("/nivel-ganado", <NivelGanado />)}
+        {this.get("/error", <Error />)}
+        {this.get("/inicio", <InicioSesion />)}
+        {this.get("/te-equivocaste", <TeEquivocaste />)}
+        {this.get("/seleccion-nivel", <SeleccionNivel />)}
+        {this.get("/explicacion", <VistaExplicacion />)}
+        {this.get("*", <Error />)}
+      </>
     );
+  }
 }

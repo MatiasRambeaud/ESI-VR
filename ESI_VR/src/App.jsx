@@ -1,8 +1,7 @@
-
-import { RouterVistas } from "./components/routers/RouterVistas";
+import RouterVistas from "./components/routers/RouterVistas";
 
 export default function App() {
     return (
-        <RouterVistas />
+        <RouterVistas/>
     );
 }
