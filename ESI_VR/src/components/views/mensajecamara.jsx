@@ -1,8 +1,7 @@
+import Alerta from './alerta';
+import CajaMensaje from './mensajepermiso';
 
-import alerta from './alerta';
-import cajamensaje from './mensajepermiso';
-
-const mensajecamara = () => (
+const MensajeCamara = () => (
   <div style={{
     display: 'flex',
     flexDirection: 'column',
@@ -12,9 +11,9 @@ const mensajecamara = () => (
     backgroundColor: '#fdf7cc',
     minHeight: '100vh'
   }}>
-    <alerta />
-    <caja-mensaje mensaje="ESI necesita acceder a los permisos de la cámara para funcionar correctamente." />
+    <Alerta />
+    <CajaMensaje mensaje="ESI necesita acceder a los permisos de la cámara para funcionar correctamente." />
   </div>
 );
 
-export default mensajecamara;
+export default MensajeCamara;

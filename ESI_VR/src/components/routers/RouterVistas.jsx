@@ -6,6 +6,8 @@ import InicioSesion from "../views/InicioSesion";
 import TeEquivocaste from "../views/TeEquivocaste";
 import SeleccionNivel from "../views/SeleccionNivel";
 import VistaExplicacion from "../views/vistaexplicacion";
+import VRPantalla from "../views/VRPantalla";
+import Mensajecamara from "../views/mensajecamara";
 
 export default class RouterVistas extends RouterBase {
   init() {
@@ -14,6 +16,7 @@ export default class RouterVistas extends RouterBase {
         {this.get("/perfil", <PerfilUsuario />)}
         {this.get("/nivel-ganado", <NivelGanado />)}
         {this.get("/error", <Error />)}
+        {this.get("/mensaje-camara", <Mensajecamara />)}
         {this.get("/inicio", <InicioSesion />)}
         {this.get("/te-equivocaste", <TeEquivocaste />)}
         {this.get("/seleccion-nivel", <SeleccionNivel />)}
