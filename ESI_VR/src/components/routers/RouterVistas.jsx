@@ -6,7 +6,6 @@ import InicioSesion from "../views/InicioSesion";
 import TeEquivocaste from "../views/TeEquivocaste";
 import SeleccionNivel from "../views/SeleccionNivel";
 import VistaExplicacion from "../views/vistaexplicacion";
-import VRPantalla from "../views/VRPantalla";
 import Mensajecamara from "../views/mensajecamara";
 
 export default class RouterVistas extends RouterBase {
