@@ -7,7 +7,7 @@
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <style>
       /* botones visibles sobre la escena */
-      #volver, #backpage {
+      #volver, #perfil, #nivel {
         position: fixed;
         top: 10px;
         z-index: 10;
@@ -19,20 +19,23 @@
         background: rgba(0,0,0,0.6);
         color: #fff;
       }
-      #backpage { left: 140px; }
-      #volver { left: 10px; }
+      #perfil { left: 150px; }
+      #volver { left: 300px; }
+      #perfil { left: 50px; }
     </style>
   </head>
   <body>
     <!-- Botones -->
     <button id="volver">⬅ Volver (restaurar vista + cambiar imagen)</button>
-    
-
+     <button id="perfil">⬅ Perfil (ir al perfil)</button>
+     <button id="nivel">⬅ Seleccionar nivel</button> 
+     
     <a-scene>
       <!-- Preload de imágenes -->
       <a-assets>
         <img id="errorImg" src="error.png" alt="error">
         <img id="inicioImg" src="inicio.png" alt="inicio">
+        <img id="perfilImg" src="perfil.png" alt="perfil">
       </a-assets>
 
       <!-- Cielo y suelo -->
