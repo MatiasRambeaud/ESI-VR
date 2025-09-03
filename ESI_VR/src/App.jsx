@@ -1,7 +1,8 @@
-import RouterVistas from "./components/routers/RouterVistas";
+import React from 'react';
+import Login from './Login';
 
-export default function App() {
-    return (
-        <RouterVistas/>
-    );
+function App() {
+  return <Login />;
 }
+
+export default App;
