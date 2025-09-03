@@ -19,9 +19,9 @@
         background: rgba(0,0,0,0.6);
         color: #fff;
       }
-      #perfil { left: 150px; }
-      #volver { left: 300px; }
-      #perfil { left: 50px; }
+      #perfil { left: 165px; }
+      #volver { left: 315px; }
+      #nivel { left: 10px; }
     </style>
   </head>
   <body>
@@ -35,7 +35,7 @@
       <a-assets>
         <img id="errorImg" src="error.png" alt="error">
         <img id="inicioImg" src="inicio.png" alt="inicio">
-        <img id="perfilImg" src="perfil.png" alt="perfil">
+        <img id="perfilImg" src="perfil_usuario.png" alt="perfil">
       </a-assets>
 
       <!-- Cielo y suelo -->
@@ -106,7 +106,7 @@
           img.setAttribute('animation__pop', 'property: scale; to: 1.05 1.05 1; dur: 150; dir: alternate; loop: 1');
         });
 
-        // 🔹 Redirigir al perfil.html
+        // Redirigir al perfil.html
         perfilBtn.addEventListener('click', () => {
           window.location.href = "perfil.html"; 
         });
