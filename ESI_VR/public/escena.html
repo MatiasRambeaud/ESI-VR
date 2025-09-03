@@ -89,6 +89,7 @@
         const cam = document.getElementById('cam');
         const img = document.getElementById('miImagen');
         const volverBtn = document.getElementById('volver');
+        const perfilBtn = document.getElementById('perfil'); // botón perfil
 
 
         // guardamos la posición inicial de la cámara
@@ -105,7 +106,10 @@
           img.setAttribute('animation__pop', 'property: scale; to: 1.05 1.05 1; dur: 150; dir: alternate; loop: 1');
         });
 
-      
+        // 🔹 Redirigir al perfil.html
+        perfilBtn.addEventListener('click', () => {
+          window.location.href = "perfil.html"; 
+        });
       });
     </script>
   </body>
