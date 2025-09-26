@@ -1,8 +1,8 @@
 import React from 'react';
-import Login from './components/views/Login';
+import VRLogin from './components/VRPlaza/VRLogin';
 
 function App() {
-  return <Login />;
+  return <VRLogin />
 }
 
 export default App;
