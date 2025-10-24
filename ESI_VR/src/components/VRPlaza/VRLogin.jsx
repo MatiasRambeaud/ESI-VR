@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { VRPlaza } from './VRPlaza';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { auth, googleProvider } from '../../firebase/firebase';
 
 const VRLogin = () => {
   const [username, setUsername] = useState('');
@@ -8,10 +10,12 @@ const VRLogin = () => {
   const [isEditingUsername, setIsEditingUsername] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
   const [currentInput, setCurrentInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
   const loginButtonRef = useRef(null);
+  const googleButtonRef = useRef(null);
 
   useEffect(() => {
     // Event listeners para A-Frame
@@ -52,6 +56,9 @@ const VRLogin = () => {
     if (loginButtonRef.current) {
       loginButtonRef.current.addEventListener('click', handleLoginClick);
     }
+    if (googleButtonRef.current) {
+      googleButtonRef.current.addEventListener('click', handleGoogleSignIn);
+    }
 
     // Cleanup
     return () => {
@@ -63,6 +70,9 @@ const VRLogin = () => {
       }
       if (loginButtonRef.current) {
         loginButtonRef.current.removeEventListener('click', handleLoginClick);
+      }
+      if (googleButtonRef.current) {
+        googleButtonRef.current.removeEventListener('click', handleGoogleSignIn);
       }
     };
   }, [username, password]);
@@ -112,6 +122,23 @@ const VRLogin = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isEditingUsername, isEditingPassword]);
 
+  // Función para iniciar sesión con Google
+  const handleGoogleSignIn = async () => {
+    try {
+      setIsLoading(true);
+      setError('');
+      const result = await signInWithPopup(auth, googleProvider);
+      // El usuario ha iniciado sesión correctamente
+      // Firebase maneja la sesión automáticamente
+      console.log('Usuario autenticado con Google:', result.user);
+    } catch (error) {
+      console.error('Error al iniciar sesión con Google:', error);
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   // Contenido JSX que se renderizará en la pantalla VR
   const loginForm = (
     <a-entity position="0 0 0.01">
@@ -126,7 +153,7 @@ const VRLogin = () => {
 
       {/* Título */}
       <a-text
-        value="Iniciar Sesión"
+        value="Iniciar Sesion"
         position="0 0.6 0"
         color="#333"
         align="center"
@@ -163,7 +190,7 @@ const VRLogin = () => {
 
       {/* Campo de contraseña */}
       <a-text
-        value="Contraseña:"
+        value="Contrasena:"
         position="-0.7 -0.2 0"
         color="#333"
         align="left"
@@ -210,20 +237,42 @@ const VRLogin = () => {
         ></a-text>
       </a-box>
 
+      {/* Botón de Google Sign-In */}
+      <a-box
+        ref={googleButtonRef}
+        id="google-signin-button"
+        position="0 -0.9 0"
+        width="1.0"
+        height="0.2"
+        depth="0.05"
+        color="#DB4437"
+        class="clickable"
+        events="mouseenter: scale: 1.05 1.05 1.05; mouseleave: scale: 1 1 1"
+      >
+        <a-text
+          value={isLoading ? 'Cargando...' : 'Iniciar con Google'}
+          position="0 0 0.026"
+          color="#fff"
+          align="center"
+          width="0.8"
+        ></a-text>
+      </a-box>
+
       {/* Mensaje de error */}
       {error && (
         <a-text
-          value={error}
-          position="0 -0.8 0"
-          color="#f44336"
+          value={error.length > 50 ? error.substring(0, 50) + '...' : error}
+          position="0 -0.4 0"
+          color="red"
           align="center"
-          width="1.8"
+          width="1.6"
+          wrap-count="20"
         ></a-text>
       )}
 
-      {/* Indicador de modo edición */}
+      {/* Indicador de edición */}
       {(isEditingUsername || isEditingPassword) && (
-        <a-entity position="0 0.4 0">
+        <a-entity position="0 -1.2 0">
           <a-text
             value={`Editando ${isEditingUsername ? 'usuario' : 'contraseña'}: ${currentInput}`}
             color="#2196F3"
