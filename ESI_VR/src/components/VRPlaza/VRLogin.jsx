@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { VRPlaza } from './VRPlaza';
 
-const VRLogin = () => {
+const VRLogin = ({ onSelectLevel, onBack, onProfile }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -98,6 +98,11 @@ const VRLogin = () => {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (isEditingUsername || isEditingPassword) {
+        if (event.key === 'f' || event.key === 'F') {
+          event.preventDefault();
+          if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+          event.stopPropagation();
+        }
         if (event.key === 'Backspace') {
           handleKeyPress('Backspace');
         } else if (event.key === 'Enter') {
@@ -244,9 +249,10 @@ const VRLogin = () => {
 
   return (
     <VRPlaza
-      onBack={() => console.log('Volver')}
-      onProfile={() => console.log('Ir al perfil')}
-      onSelectLevel={() => console.log('Seleccionar nivel')}
+      onBack={onBack}
+      onProfile={onProfile}
+      onSelectLevel={onSelectLevel}
+      movementLocked={isEditingUsername || isEditingPassword}
     >
       {loginForm}
     </VRPlaza>

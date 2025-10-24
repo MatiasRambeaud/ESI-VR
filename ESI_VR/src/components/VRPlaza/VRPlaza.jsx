@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import 'aframe';
 
-export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCameraPosition = '0 1.6 4' }) => {
+export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCameraPosition = '0 1.6 4', movementLocked = false }) => {
   const sceneRef = useRef(null);
   const screenRef = useRef(null);
   const cameraRef = useRef(null);
@@ -43,6 +43,21 @@ export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCam
       cameraRef.current.setAttribute('rotation', '0 0 0');
     }
   };
+
+  useEffect(() => {
+    const cameraEl = cameraRef.current;
+
+    const wasd = cameraEl && cameraEl.components && cameraEl.components['wasd-controls'];
+    if (wasd) {
+      if (movementLocked) {
+        wasd.pause();
+      } else {
+        wasd.play();
+      }
+    }
+
+    return () => {};
+  }, [movementLocked]);
 
   return (
     <div style={{ width: '100%', height: '100vh', position: 'relative' }}>

@@ -1,0 +1,29 @@
+[
+  {
+    "question": "¿Qué significa ESI?",
+    "options": [
+      "Educación Sexual Integral",
+      "Estudio Social Infantil",
+      "Enseñanza Saludable Institucional"
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "La ESI busca...",
+    "options": [
+      "Promover derechos y cuidados",
+      "Fomentar tabúes",
+      "Evitar hablar de emociones"
+    ],
+    "answerIndex": 0
+  },
+  {
+    "question": "Un contenido de ESI es...",
+    "options": [
+      "Autoconocimiento y cuidado del cuerpo",
+      "Memorización de fechas patrias",
+      "Cálculo de integrales"
+    ],
+    "answerIndex": 0
+  }
+]
