@@ -15,7 +15,13 @@ const pickRandomIndices = (total, count) => {
 
 const VRLevels = ({ onFinish }) => {
   const { user } = useAuth();
-  const { guardarPuntaje, isLoading: isSaving, error: saveError } = usePuntajes();
+  const { 
+    guardarPuntaje, 
+    guardarRespuestaIndividual, 
+    actualizarPuntajeRealTime,
+    isLoading: isSaving, 
+    error: saveError 
+  } = usePuntajes();
   
   // Estados para manejar el quiz
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Índice de la pregunta actual
@@ -25,6 +31,7 @@ const VRLevels = ({ onFinish }) => {
   const [showFeedback, setShowFeedback] = useState(false); // Mostrar feedback correcto/incorrecto
   const [isCorrect, setIsCorrect] = useState(false); // Si la respuesta es correcta
   const [showScoreScreen, setShowScoreScreen] = useState(false); // Mostrar pantalla de puntaje final
+  const [quizSessionId, setQuizSessionId] = useState(null); // ID de la sesión del quiz
   
   const [quizData, setQuizData] = useState({
     questionIndices: [],
@@ -57,6 +64,10 @@ const VRLevels = ({ onFinish }) => {
       const randomIndices = pickRandomIndices(allQuestions.length, maxRounds);
       const selectedQuestions = randomIndices.map(idx => allQuestions[idx]);
       
+      // Generar ID único para la sesión del quiz
+      const sessionId = `quiz_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      setQuizSessionId(sessionId);
+      
       setQuizData({
         questionIndices: randomIndices,
         questions: selectedQuestions
@@ -73,12 +84,12 @@ const VRLevels = ({ onFinish }) => {
   }, [allQuestions.length]);
 
   // Función para verificar respuesta y verificar si es correcta
-  const verificarRespuesta = (selectedAnswerIndex) => {
+  const verificarRespuesta = async (selectedAnswerIndex) => {
     if (!currentQuestion || isAnswered) return;
     
     const respuestaCorrecta = selectedAnswerIndex === currentQuestion.answerIndex;
     
-    // Guardar la respuesta en el array
+    // Guardar la respuesta en el array local
     const nuevaRespuesta = {
       questionIndex: quizData.questionIndices[currentQuestionIndex],
       selectedIndex: selectedAnswerIndex,
@@ -94,8 +105,28 @@ const VRLevels = ({ onFinish }) => {
     setShowFeedback(true);
     
     // Si la respuesta es correcta, sumar un punto
+    let nuevoScore = score;
     if (respuestaCorrecta) {
-      setScore(prev => prev + 1);
+      nuevoScore = score + 1;
+      setScore(nuevoScore);
+    }
+    
+    // Guardar respuesta individual en Firebase en tiempo real
+    if (user && quizSessionId) {
+      const respuestaData = {
+        questionIndex: quizData.questionIndices[currentQuestionIndex],
+        selectedAnswerIndex: selectedAnswerIndex,
+        correctAnswerIndex: currentQuestion.answerIndex,
+        isCorrect: respuestaCorrecta,
+        quizSessionId: quizSessionId,
+        currentScore: nuevoScore
+      };
+      
+      // Guardar respuesta individual
+      await guardarRespuestaIndividual(respuestaData);
+      
+      // Actualizar puntaje en tiempo real
+      await actualizarPuntajeRealTime(quizSessionId, nuevoScore);
     }
   };
 
@@ -127,10 +158,10 @@ const VRLevels = ({ onFinish }) => {
 
   // Event listeners para los botones de respuesta
   useEffect(() => {
-    const handleOptionClick = (optionIndex) => {
+    const handleOptionClick = async (optionIndex) => {
       if (!currentQuestion || isAnswered) return;
       
-      verificarRespuesta(optionIndex);
+      await verificarRespuesta(optionIndex);
     };
 
     const h1 = () => handleOptionClick(0);
@@ -146,7 +177,7 @@ const VRLevels = ({ onFinish }) => {
       if (box2Ref.current) box2Ref.current.removeEventListener('click', h2);
       if (box3Ref.current) box3Ref.current.removeEventListener('click', h3);
     };
-  }, [currentQuestion, isAnswered, currentQuestionIndex, quizData.questionIndices]);
+  }, [currentQuestion, isAnswered, currentQuestionIndex, quizData.questionIndices, verificarRespuesta]);
 
   // Auto-avanzar a la siguiente pregunta después de mostrar feedback
   useEffect(() => {

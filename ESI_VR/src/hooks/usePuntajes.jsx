@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, addDoc, query, where, orderBy, getDocs, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, query, where, orderBy, getDocs, serverTimestamp, doc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import { useAuth } from '../context/AuthContext';
 
@@ -112,6 +112,79 @@ export const usePuntajes = () => {
     };
   };
 
+  // Función para guardar una respuesta individual en tiempo real
+  const guardarRespuestaIndividual = async (respuestaData) => {
+    if (!user) {
+      setError('Usuario no autenticado');
+      return null;
+    }
+
+    try {
+      const respuestasRef = collection(db, 'respuestas');
+      
+      const docRef = await addDoc(respuestasRef, {
+        userId: user.uid,
+        email: user.email,
+        questionIndex: respuestaData.questionIndex,
+        selectedAnswerIndex: respuestaData.selectedAnswerIndex,
+        correctAnswerIndex: respuestaData.correctAnswerIndex,
+        isCorrect: respuestaData.isCorrect,
+        quizSessionId: respuestaData.quizSessionId,
+        currentScore: respuestaData.currentScore,
+        timestamp: serverTimestamp(),
+        createdAt: new Date().toISOString()
+      });
+
+      console.log('Respuesta individual guardada con ID:', docRef.id);
+      return docRef.id;
+    } catch (error) {
+      console.error('Error al guardar la respuesta individual:', error);
+      setError('Error al guardar la respuesta: ' + error.message);
+      return null;
+    }
+  };
+
+  // Función para actualizar el puntaje acumulado en tiempo real
+  const actualizarPuntajeRealTime = async (sessionId, nuevoPuntaje) => {
+    if (!user) {
+      setError('Usuario no autenticado');
+      return;
+    }
+
+    try {
+      const sesionesRef = collection(db, 'sesionesQuiz');
+      const docRef = doc(sesionesRef, sessionId);
+
+      // Verificar si el documento existe
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        // Actualizar el documento existente
+        await updateDoc(docRef, {
+          puntajeActual: nuevoPuntaje,
+          ultimaActualizacion: serverTimestamp()
+        });
+        console.log('Puntaje actualizado en tiempo real:', nuevoPuntaje);
+      } else {
+        // Crear nuevo documento de sesión
+        await setDoc(docRef, {
+          userId: user.uid,
+          email: user.email,
+          puntajeActual: nuevoPuntaje,
+          preguntaActual: 0,
+          totalPreguntas: 5,
+          timestamp: serverTimestamp(),
+          ultimaActualizacion: serverTimestamp(),
+          status: 'enCurso'
+        });
+        console.log('Nueva sesión de quiz creada con puntaje:', nuevoPuntaje);
+      }
+    } catch (error) {
+      console.error('Error al actualizar puntaje en tiempo real:', error);
+      setError('Error al actualizar puntaje: ' + error.message);
+    }
+  };
+
   // Función para limpiar errores
   const limpiarError = () => {
     setError(null);
@@ -136,6 +209,9 @@ export const usePuntajes = () => {
     guardarPuntaje,
     obtenerHistorialPuntajes,
     obtenerEstadisticas,
-    limpiarError
+    limpiarError,
+    // Nuevas funciones para tiempo real
+    guardarRespuestaIndividual,
+    actualizarPuntajeRealTime
   };
 };
