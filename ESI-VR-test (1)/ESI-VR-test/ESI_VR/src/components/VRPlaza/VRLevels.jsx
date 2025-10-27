@@ -389,7 +389,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
         width="1.6" 
         height="0.4" 
         position="0 0.55 0"
-        animation={showFeedback ? `property: color; to: ${isCorrect ? '#4CAF50' : '#F44336'}; dur: 300; easing: easeInOut` : ''}
+        animation={showFeedback ? `property: color; to: ${isCorrect ? '#4CAF50' : '#F44336'}; dur: 300; easing: easeInOutSine` : ''}
       ></a-plane>
       <a-text 
         value={currentQuestion ? currentQuestion.question : 'Cargando...'} 
@@ -409,7 +409,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
           align="center" 
           width="1.6"
           font-size="36"
-          animation="property: opacity; from: 0; to: 1; dur: 300; easing: easeOut"
+          animation="property: opacity; from: 0; to: 1; dur: 300; easing: easeOutQuad"
         ></a-text>
       )}
 
@@ -423,7 +423,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
         color="#ffffff" 
         class="clickable"
         events="mouseenter: scale: 1.02 1.02 1.02; mouseleave: scale: 1 1 1"
-        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOut" : ""}
+        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOutSine" : ""}
       >
         <a-text value={currentQuestion ? currentQuestion.options[0] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></a-text>
       </a-box>
@@ -438,7 +438,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
         color="#ffffff" 
         class="clickable"
         events="mouseenter: scale: 1.02 1.02 1.02; mouseleave: scale: 1 1 1"
-        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOut" : ""}
+        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOutSine" : ""}
       >
         <a-text value={currentQuestion ? currentQuestion.options[1] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></a-text>
       </a-box>
@@ -453,7 +453,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
         color="#ffffff" 
         class="clickable"
         events="mouseenter: scale: 1.02 1.02 1.02; mouseleave: scale: 1 1 1"
-        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOut" : ""}
+        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOutSine" : ""}
       >
         <a-text value={currentQuestion ? currentQuestion.options[2] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></a-text>
       </a-box>
