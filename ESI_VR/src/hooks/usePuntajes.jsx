@@ -31,8 +31,6 @@ export const usePuntajes = () => {
         createdAt: new Date().toISOString()
       });
 
-      console.log('Puntaje guardado exitosamente con ID:', docRef.id);
-      
       // Actualizar la lista local de puntajes
       await obtenerHistorialPuntajes();
       
@@ -75,7 +73,6 @@ export const usePuntajes = () => {
       });
 
       setPuntajes(puntajesData);
-      console.log('Historial de puntajes obtenido:', puntajesData.length, 'registros');
       
       return puntajesData;
     } catch (error) {
@@ -135,7 +132,6 @@ export const usePuntajes = () => {
         createdAt: new Date().toISOString()
       });
 
-      console.log('Respuesta individual guardada con ID:', docRef.id);
       return docRef.id;
     } catch (error) {
       console.error('Error al guardar la respuesta individual:', error);
@@ -164,7 +160,6 @@ export const usePuntajes = () => {
           puntajeActual: nuevoPuntaje,
           ultimaActualizacion: serverTimestamp()
         });
-        console.log('Puntaje actualizado en tiempo real:', nuevoPuntaje);
       } else {
         // Crear nuevo documento de sesión
         await setDoc(docRef, {
@@ -177,7 +172,6 @@ export const usePuntajes = () => {
           ultimaActualizacion: serverTimestamp(),
           status: 'enCurso'
         });
-        console.log('Nueva sesión de quiz creada con puntaje:', nuevoPuntaje);
       }
     } catch (error) {
       console.error('Error al actualizar puntaje en tiempo real:', error);

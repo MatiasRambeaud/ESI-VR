@@ -65,12 +65,10 @@ function VRSelectLevel({ onBack, onSelectNivel }) {
 
   React.useEffect(() => {
     const handleNivelClick = (nivel) => () => {
-      console.log(`Seleccionado nivel: ${nivel}`);
       onSelectNivel(nivel);
     };
 
     const handleBackClick = () => {
-      console.log('Volver al inicio');
       onBack();
     };
 

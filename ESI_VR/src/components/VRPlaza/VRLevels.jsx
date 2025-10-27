@@ -123,11 +123,8 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
         currentScore: nuevoScore
       };
       
-      // Guardar respuesta individual
-      await guardarRespuestaIndividual(respuestaData);
-      
-      // Actualizar puntaje en tiempo real
-      await actualizarPuntajeRealTime(quizSessionId, nuevoScore);
+      guardarRespuestaIndividual(respuestaData);
+      actualizarPuntajeRealTime(quizSessionId, nuevoScore);
     }
   };
 
@@ -370,19 +367,51 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
     );
   }
 
+  const progressPercentage = ((currentQuestionIndex + 1) / maxRounds) * 100;
+
   const screen = (
     <a-entity position="0 0 0.01">
-      <a-plane color="#f0f0f0" width="1.8" height="1.5" position="0 0 -0.01" opacity="0.9"></a-plane>
+      <a-plane color="#f0f0f0" width="1.8" height="1.8" position="0 0 -0.01" opacity="0.95"></a-plane>
 
-      {/* Título de la pregunta con color según feedback */}
-      <a-plane color={showFeedback ? (isCorrect ? '#4CAF50' : '#F44336') : titleBg} width="1.6" height="0.4" position="0 0.55 0"></a-plane>
+      {/* Barra de progreso */}
+      <a-plane color="#e0e0e0" width="1.6" height="0.08" position="0 0.85 0" opacity="0.8"></a-plane>
+      <a-plane 
+        color="#4CAF50" 
+        width={`${1.6 * (progressPercentage / 100)}`} 
+        height="0.08" 
+        position={`${-0.8 + (1.6 * (progressPercentage / 100) / 2)} 0.85 0.001`}
+        animation={`property: width; to: ${1.6 * (progressPercentage / 100)}; dur: 500; easing: easeOutQuad`}
+      ></a-plane>
+
+      {/* Título de la pregunta con color según feedback y animación */}
+      <a-plane 
+        color={showFeedback ? (isCorrect ? '#4CAF50' : '#F44336') : '#f0f0f0'} 
+        width="1.6" 
+        height="0.4" 
+        position="0 0.55 0"
+        animation={showFeedback ? `property: color; to: ${isCorrect ? '#4CAF50' : '#F44336'}; dur: 300; easing: easeInOut` : ''}
+      ></a-plane>
       <a-text 
         value={currentQuestion ? currentQuestion.question : 'Cargando...'} 
         position="0 0.55 0.01" 
         color="#222" 
         align="center" 
         width="1.5"
+        font-size="28"
       ></a-text>
+
+      {/* Feedback visual */}
+      {showFeedback && (
+        <a-text 
+          value={isCorrect ? '✓ Correcto!' : '✗ Incorrecto'} 
+          position="0 0.15 0.1" 
+          color={isCorrect ? '#4CAF50' : '#F44336'} 
+          align="center" 
+          width="1.6"
+          font-size="36"
+          animation="property: opacity; from: 0; to: 1; dur: 300; easing: easeOut"
+        ></a-text>
+      )}
 
       {/* Opción 1 */}
       <a-box 
@@ -391,8 +420,10 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
         width="1.4" 
         height="0.22" 
         depth="0.05" 
-        color={showFeedback && isAnswered ? "#fff" : "#ffffff"} 
+        color="#ffffff" 
         class="clickable"
+        events="mouseenter: scale: 1.02 1.02 1.02; mouseleave: scale: 1 1 1"
+        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOut" : ""}
       >
         <a-text value={currentQuestion ? currentQuestion.options[0] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></a-text>
       </a-box>
@@ -404,8 +435,10 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
         width="1.4" 
         height="0.22" 
         depth="0.05" 
-        color={showFeedback && isAnswered ? "#fff" : "#ffffff"} 
+        color="#ffffff" 
         class="clickable"
+        events="mouseenter: scale: 1.02 1.02 1.02; mouseleave: scale: 1 1 1"
+        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOut" : ""}
       >
         <a-text value={currentQuestion ? currentQuestion.options[1] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></a-text>
       </a-box>
@@ -417,8 +450,10 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
         width="1.4" 
         height="0.22" 
         depth="0.05" 
-        color={showFeedback && isAnswered ? "#fff" : "#ffffff"} 
+        color="#ffffff" 
         class="clickable"
+        events="mouseenter: scale: 1.02 1.02 1.02; mouseleave: scale: 1 1 1"
+        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOut" : ""}
       >
         <a-text value={currentQuestion ? currentQuestion.options[2] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></a-text>
       </a-box>
@@ -430,15 +465,18 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
         color="#666" 
         align="center" 
         width="1.8"
+        font-size="22"
       ></a-text>
       
       {/* Puntaje actual */}
       <a-text 
         value={`Puntaje: ${score}`} 
-        position="0 -1.0 0" 
+        position="0 -0.95 0" 
         color="#2196F3" 
         align="center" 
         width="1.8"
+        font-size="24"
+        font-weight="bold"
       ></a-text>
     </a-entity>
   );
