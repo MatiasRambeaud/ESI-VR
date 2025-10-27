@@ -13,7 +13,7 @@ const pickRandomIndices = (total, count) => {
   return indices.slice(0, Math.min(count, total));
 };
 
-const VRLevels = ({ onFinish }) => {
+const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
   const { user } = useAuth();
   const { 
     guardarPuntaje, 
@@ -41,6 +41,7 @@ const VRLevels = ({ onFinish }) => {
   const box1Ref = useRef(null);
   const box2Ref = useRef(null);
   const box3Ref = useRef(null);
+  const restartButtonRef = useRef(null);
 
   const maxRounds = 5;
 
@@ -202,6 +203,10 @@ const VRLevels = ({ onFinish }) => {
       if (onFinish) onFinish();
     };
 
+    const handleRestart = () => {
+      if (onRestart) onRestart();
+    };
+
     // Si el usuario pasó el quiz, mostrar pantalla de felicitaciones
     const successScreen = (
       <a-entity position="0 0 0.01">
@@ -321,7 +326,7 @@ const VRLevels = ({ onFinish }) => {
 
         {/* Botón para volver */}
         <a-box 
-          ref={box1Ref}
+          ref={restartButtonRef}
           position="0 -0.7 0" 
           width="1.0" 
           height="0.2" 
@@ -336,14 +341,20 @@ const VRLevels = ({ onFinish }) => {
 
     const scoreScreen = passed ? successScreen : failScreen;
 
-    // Agregar event listener para el botón de volver
+    // Agregar event listeners para los botones de las pantallas de resultado
     useEffect(() => {
       if (box1Ref.current) {
         box1Ref.current.addEventListener('click', handleBackToStart);
       }
+      if (restartButtonRef.current) {
+        restartButtonRef.current.addEventListener('click', handleRestart);
+      }
       return () => {
         if (box1Ref.current) {
           box1Ref.current.removeEventListener('click', handleBackToStart);
+        }
+        if (restartButtonRef.current) {
+          restartButtonRef.current.removeEventListener('click', handleRestart);
         }
       };
     }, []);
