@@ -4,7 +4,7 @@ import { signInWithPopup, signOut } from 'firebase/auth';
 import { auth, googleProvider } from '../../firebase/firebase';
 import { useAuth } from '../../context/AuthContext';
 
-const VRLogin = ({ onSelectLevel, onBack, onProfile }) => {
+const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial }) => {
   const { user } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -18,6 +18,7 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile }) => {
   const passwordRef = useRef(null);
   const loginButtonRef = useRef(null);
   const googleButtonRef = useRef(null);
+  const historialButtonRef = useRef(null);
 
   useEffect(() => {
     // Event listeners para A-Frame
@@ -62,6 +63,11 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile }) => {
       }
     };
 
+    const handleHistorialClick = () => {
+      console.log('Botón historial clickeado');
+      if (onHistorial) onHistorial();
+    };
+
     // Agregar event listeners
     if (usernameRef.current) {
       usernameRef.current.addEventListener('click', handleUsernameClick);
@@ -78,6 +84,9 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile }) => {
       } else {
         googleButtonRef.current.addEventListener('click', handleGoogleSignIn);
       }
+    }
+    if (historialButtonRef.current) {
+      historialButtonRef.current.addEventListener('click', handleHistorialClick);
     }
 
     // Cleanup
@@ -97,6 +106,9 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile }) => {
         } else {
           googleButtonRef.current.removeEventListener('click', handleGoogleSignIn);
         }
+      }
+      if (historialButtonRef.current) {
+        historialButtonRef.current.removeEventListener('click', handleHistorialClick);
       }
     };
   }, [username, password, user]);
@@ -220,11 +232,32 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile }) => {
           ></a-text>
         </a-box>
 
+        {/* Botón para ver historial */}
+        <a-box
+          ref={historialButtonRef}
+          id="historial-button"
+          position="0 -0.5 0"
+          width="1.0"
+          height="0.2"
+          depth="0.05"
+          color="#9C27B0"
+          class="clickable"
+          events="mouseenter: scale: 1.05 1.05 1.05; mouseleave: scale: 1 1 1"
+        >
+          <a-text
+            value="Ver Historial"
+            position="0 0 0.026"
+            color="#fff"
+            align="center"
+            width="0.8"
+          ></a-text>
+        </a-box>
+
         {/* Botón para cerrar sesión */}
         <a-box
           ref={googleButtonRef}
           id="logout-button"
-          position="0 -0.5 0"
+          position="0 -0.8 0"
           width="1.0"
           height="0.2"
           depth="0.05"

@@ -2,8 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { VRPlaza } from './VRPlaza';
 import questionsData from '../../data/questions.json';
 import { useAuth } from '../../context/AuthContext';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../../firebase/firebase';
+import { usePuntajes } from '../../hooks/usePuntajes';
 
 const pickRandomIndices = (total, count) => {
   const indices = Array.from({ length: total }, (_, i) => i);
@@ -16,13 +15,13 @@ const pickRandomIndices = (total, count) => {
 
 const VRLevels = ({ onFinish }) => {
   const { user } = useAuth();
+  const { guardarPuntaje, isLoading: isSaving, error: saveError } = usePuntajes();
   const [order, setOrder] = useState([]);
   const [pos, setPos] = useState(0);
   const [feedback, setFeedback] = useState(null); // 'correct' | 'wrong' | null
   const [locked, setLocked] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
 
   const box1Ref = useRef(null);
   const box2Ref = useRef(null);
@@ -41,27 +40,17 @@ const VRLevels = ({ onFinish }) => {
     return questions[order[pos]];
   }, [order, pos, questions]);
 
-  // Función para guardar el puntaje en Firestore
+  // Función para guardar el puntaje usando el hook
   const saveScore = async (score, questionIndices) => {
     if (!user) return;
     
-    try {
-      setIsSaving(true);
-      const scoresRef = collection(db, 'Scores');
-      await addDoc(scoresRef, {
-        userId: user.uid,
-        email: user.email,
-        score: score,
-        totalQuestions: maxRounds,
-        timestamp: serverTimestamp(),
-        questionIndices: questionIndices
-      });
-      console.log('Puntaje guardado exitosamente');
-    } catch (error) {
-      console.error('Error al guardar el puntaje:', error);
-    } finally {
-      setIsSaving(false);
-    }
+    const scoreData = {
+      score: score,
+      totalQuestions: maxRounds,
+      questionIndices: questionIndices
+    };
+    
+    await guardarPuntaje(scoreData);
   };
 
   useEffect(() => {
@@ -136,9 +125,17 @@ const VRLevels = ({ onFinish }) => {
         <a-text value={`Puntaje: ${correctAnswers} / ${maxRounds}`} position="0 0.1 0" color="#333" align="center" width="1.6"></a-text>
         
         <a-text 
-          value={isSaving ? "Guardando puntaje..." : "Puntaje guardado exitosamente"} 
+          value={
+            isSaving ? "Guardando puntaje..." : 
+            saveError ? `Error: ${saveError}` : 
+            "Puntaje guardado exitosamente"
+          } 
           position="0 -0.1 0" 
-          color={isSaving ? "#FF9800" : "#4CAF50"} 
+          color={
+            isSaving ? "#FF9800" : 
+            saveError ? "#F44336" : 
+            "#4CAF50"
+          } 
           align="center" 
           width="1.6"
         ></a-text>
