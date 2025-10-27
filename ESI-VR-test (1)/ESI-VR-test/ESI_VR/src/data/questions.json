@@ -1,0 +1,722 @@
+[
+   {
+     "question": "¿Qué significa ESI?",
+     "options": [
+       "Educación Sexual Integral",
+       "Escuela de Salud Infantil",
+       "Enseñanza Social Inclusiva"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Cuál es el objetivo principal de la ESI?",
+     "options": [
+       "Promover valores religiosos",
+       "Brindar información científica y respeto por los demás",
+       "Enseñar biología únicamente"
+     ],
+     "answerIndex": 1
+   },
+   {
+     "question": "La ESI busca educar en:",
+     "options": [
+       "Cuerpo, emociones, derechos y respeto",
+       "Solo anatomía",
+       "Deportes"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Desde qué edad se enseña ESI?",
+     "options": [
+       "Solo en secundaria",
+       "Desde el nivel inicial",
+       "En la universidad"
+     ],
+     "answerIndex": 1
+   },
+   {
+     "question": "¿Qué ley establece la ESI en Argentina?",
+     "options": [
+       "Ley 26.150",
+       "Ley 24.195",
+       "Ley 27.500"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "La ESI promueve una mirada:",
+     "options": [
+       "Integral y con perspectiva de derechos",
+       "Basada en castigos",
+       "Parcial y biológica"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Quiénes deben enseñar ESI?",
+     "options": [
+       "Solo médicos",
+       "Todo el personal docente",
+       "Los padres exclusivamente"
+     ],
+     "answerIndex": 1
+   },
+   {
+     "question": "La ESI busca prevenir:",
+     "options": [
+       "Solo enfermedades",
+       "Violencias, abusos y discriminación",
+       "El uso de tecnología"
+     ],
+     "answerIndex": 1
+   },
+   {
+     "question": "Una educación integral considera:",
+     "options": [
+       "Lo biológico, psicológico y social",
+       "Solo lo emocional",
+       "Solo lo moral"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué valor promueve la ESI?",
+     "options": [
+       "La igualdad de género",
+       "La competencia",
+       "El silencio"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Conocer el propio cuerpo permite:",
+     "options": [
+       "Cuidarlo y respetarlo",
+       "Ignorarlo",
+       "Compararlo con otros"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "La pubertad es:",
+     "options": [
+       "Un cambio natural en el cuerpo",
+       "Una enfermedad",
+       "Un castigo"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué sucede en la pubertad?",
+     "options": [
+       "Cambios físicos y emocionales",
+       "Ningún cambio",
+       "Solo crece el cabello"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Por qué es importante la higiene personal?",
+     "options": [
+       "Por salud y bienestar",
+       "Por moda",
+       "Para evitar burlas"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué órgano produce las hormonas sexuales femeninas?",
+     "options": [
+       "Ovarios",
+       "Páncreas",
+       "Hígado"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué órgano produce las hormonas sexuales masculinas?",
+     "options": [
+       "Testículos",
+       "Corazón",
+       "Riñón"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué es el ciclo menstrual?",
+     "options": [
+       "Un proceso natural del cuerpo femenino",
+       "Una enfermedad",
+       "Un mito"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué ayuda a prevenir las ITS?",
+     "options": [
+       "El uso del preservativo",
+       "Bañarse todos los días",
+       "No hablar del tema"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué es el consentimiento?",
+     "options": [
+       "Aceptar libremente una situación",
+       "Quedarse callado",
+       "Hacer lo que otros dicen"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Quién tiene derecho a decidir sobre su cuerpo?",
+     "options": [
+       "Cada persona",
+       "Los demás",
+       "Solo los adultos"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Expresar emociones es:",
+     "options": [
+       "Natural y saludable",
+       "Una debilidad",
+       "Innecesario"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué es el respeto?",
+     "options": [
+       "Reconocer al otro como igual",
+       "Ignorar lo que siente",
+       "Burlarse"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "En una relación sana debe haber:",
+     "options": [
+       "Diálogo, confianza y respeto",
+       "Control y celos",
+       "Mentiras"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Los celos son:",
+     "options": [
+       "Señal de amor",
+       "Falta de confianza",
+       "Algo normal y positivo"
+     ],
+     "answerIndex": 1
+   },
+   {
+     "question": "La empatía es:",
+     "options": [
+       "Ponerse en el lugar del otro",
+       "Mandar sobre los demás",
+       "Ignorar sentimientos ajenos"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Un vínculo tóxico se caracteriza por:",
+     "options": [
+       "Control, manipulación o violencia",
+       "Respeto",
+       "Diálogo"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué es la autoestima?",
+     "options": [
+       "Valorarse a uno mismo",
+       "Pensar mal de los demás",
+       "Ser egoísta"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué ayuda a mejorar la autoestima?",
+     "options": [
+       "Aceptarse y cuidarse",
+       "Compararse",
+       "Criticarse"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué se necesita para una buena comunicación?",
+     "options": [
+       "Escucha y respeto",
+       "Interrumpir al otro",
+       "Gritar más fuerte"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué hacer si un amigo está triste?",
+     "options": [
+       "Escucharlo y acompañarlo",
+       "Reírse",
+       "Ignorarlo"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué es el género?",
+     "options": [
+       "Una construcción social sobre lo masculino y femenino",
+       "El sexo biológico",
+       "Una moda"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "La igualdad de género significa:",
+     "options": [
+       "Mismos derechos y oportunidades para todos",
+       "Tratar mejor a los hombres",
+       "Ignorar las diferencias"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué es un estereotipo de género?",
+     "options": [
+       "Una idea fija sobre cómo deben ser hombres y mujeres",
+       "Un rasgo biológico",
+       "Una profesión"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Un ejemplo de estereotipo:",
+     "options": [
+       "“Las mujeres no saben conducir”",
+       "“Todos pueden aprender”",
+       "“Cada persona es distinta”"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué promueve la ESI sobre la diversidad?",
+     "options": [
+       "El respeto y la inclusión",
+       "La discriminación",
+       "El silencio"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Las personas LGBTIQ+ tienen:",
+     "options": [
+       "Los mismos derechos que todos",
+       "Menos derechos",
+       "Obligaciones distintas"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué es la identidad de género?",
+     "options": [
+       "Cómo cada persona se siente y se identifica",
+       "El nombre de nacimiento",
+       "El color de piel"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué es la orientación sexual?",
+     "options": [
+       "Atracción afectiva o sexual hacia otras personas",
+       "Una elección obligatoria",
+       "Un diagnóstico médico"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué se debe hacer frente a la discriminación?",
+     "options": [
+       "Denunciarla y acompañar",
+       "Participar en ella",
+       "Ignorarla"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "La diversidad es:",
+     "options": [
+       "Algo natural y valioso",
+       "Un problema",
+       "Un error"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "La ESI se basa en el respeto a:",
+     "options": [
+       "Los derechos humanos",
+       "Las opiniones únicas",
+       "Las imposiciones"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Todos los niños, niñas y adolescentes tienen derecho a:",
+     "options": [
+       "Recibir ESI",
+       "No aprender sobre su cuerpo",
+       "Ser ignorados"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Un derecho sexual es:",
+     "options": [
+       "Decidir libremente sobre la vida afectiva y corporal",
+       "Hacer lo que otros dicen",
+       "Ocultar información"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué hacer ante un caso de abuso?",
+     "options": [
+       "Contar a un adulto de confianza o autoridad",
+       "Guardar silencio",
+       "Sentirse culpable"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "El abuso sexual ocurre cuando:",
+     "options": [
+       "Se vulnera el consentimiento",
+       "Hay amor",
+       "Se juega"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué organismos protegen derechos de niños/as?",
+     "options": [
+       "Línea 102, escuelas, justicia",
+       "Solo la familia",
+       "Nadie"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué valores promueve la ESI?",
+     "options": [
+       "Respeto, igualdad, empatía",
+       "Competencia, silencio",
+       "Desigualdad"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "La educación en derechos ayuda a:",
+     "options": [
+       "Convivir mejor",
+       "Discutir más",
+       "No respetar a otros"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué debe hacer la escuela frente a la violencia?",
+     "options": [
+       "Intervenir, contener y denunciar",
+       "Ignorarla",
+       "Castigar a la víctima"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Por qué es importante hablar de ESI?",
+     "options": [
+       "Porque informa y previene situaciones de riesgo",
+       "Porque incomoda",
+       "Porque es moda"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Cuidar el cuerpo implica:",
+     "options": [
+       "Buena alimentación, higiene y descanso",
+       "Ignorarlo",
+       "Hacer lo que otros dicen"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Dormir bien es importante para:",
+     "options": [
+       "La salud física y mental",
+       "Perder tiempo",
+       "Ver televisión"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Una alimentación saludable incluye:",
+     "options": [
+       "Frutas, verduras y agua",
+       "Solo golosinas",
+       "Solo carne"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Hacer actividad física ayuda a:",
+     "options": [
+       "Mantener el bienestar",
+       "Cansarse",
+       "Pasar hambre"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué es el autocuidado?",
+     "options": [
+       "Conocerse, cuidarse y respetarse",
+       "Aislarse",
+       "No escuchar consejos"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué hacer ante una situación incómoda?",
+     "options": [
+       "Decir “no” y buscar ayuda",
+       "Callar",
+       "Huir sin contarlo"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué es la presión de grupo?",
+     "options": [
+       "Influencia de otros para hacer algo",
+       "Una actividad física",
+       "Una emoción"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué actitud es positiva frente a la presión de grupo?",
+     "options": [
+       "Saber decir “no”",
+       "Aceptar todo",
+       "Callar"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "El consumo de alcohol o drogas en jóvenes:",
+     "options": [
+       "Afecta la salud y el juicio",
+       "Mejora el rendimiento",
+       "Es seguro siempre"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "La prevención de adicciones incluye:",
+     "options": [
+       "Información y apoyo emocional",
+       "Silencio",
+       "Castigos"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "La sexualidad incluye:",
+     "options": [
+       "Cuerpo, emociones, vínculos y valores",
+       "Solo relaciones sexuales",
+       "Solo placer"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Tener relaciones sexuales sin protección puede causar:",
+     "options": [
+       "Embarazo o ITS",
+       "Nada",
+       "Sueño"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué método previene ITS y embarazos?",
+     "options": [
+       "Preservativo",
+       "Pastillas sin receta",
+       "Ninguno"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué es una ITS?",
+     "options": [
+       "Infección de transmisión sexual",
+       "Infección del estómago",
+       "Gripe"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué hacer ante dudas sobre sexualidad?",
+     "options": [
+       "Consultar fuentes confiables o adultos de confianza",
+       "Buscar en redes sin filtro",
+       "No preguntar"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué es la responsabilidad afectiva?",
+     "options": [
+       "Cuidar cómo afectan nuestras acciones a otros",
+       "Ignorar sentimientos",
+       "Culpar al otro"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué se necesita en una relación sexual consentida?",
+     "options": [
+       "Consentimiento libre y mutuo",
+       "Presión",
+       "Alcohol"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué significa decir “no es no”?",
+     "options": [
+       "Que no hay consentimiento",
+       "Que sí",
+       "Que depende"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "La información sobre sexualidad debe ser:",
+     "options": [
+       "Científica y respetuosa",
+       "Secreta",
+       "Mítica"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué implica la paternidad responsable?",
+     "options": [
+       "Asumir cuidados y decisiones compartidas",
+       "Ignorar al hijo",
+       "Culpar a la pareja"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué es el bullying?",
+     "options": [
+       "Maltrato físico o psicológico reiterado",
+       "Un juego",
+       "Un deporte"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué hacer ante el bullying?",
+     "options": [
+       "Avisar a adultos y acompañar a la víctima",
+       "Reírse",
+       "Filmarlo"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "La escuela debe ser:",
+     "options": [
+       "Un espacio seguro y respetuoso",
+       "Un lugar de competencia",
+       "Solo de estudio"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Qué actitud demuestra respeto en clase?",
+     "options": [
+       "Escuchar y participar sin agredir",
+       "Gritar",
+       "Burlarse"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "La amistad se basa en:",
+     "options": [
+       "Confianza y sinceridad",
+       "Interés",
+       "Mentiras"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "Compartir ideas diferentes requiere:",
+     "options": [
+       "Escucha y diálogo",
+       "Discusión",
+       "Desprecio"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "La igualdad se construye con:",
+     "options": [
+       "Respeto y empatía",
+       "Silencio",
+       "Rechazo"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "En redes sociales, debemos:",
+     "options": [
+       "Cuidar la privacidad y respetar a otros",
+       "Publicar todo",
+       "Agredir sin consecuencias"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "La violencia de género es:",
+     "options": [
+       "Agresión basada en el sexo o género",
+       "Una discusión",
+       "Algo normal"
+     ],
+     "answerIndex": 0
+   },
+   {
+     "question": "¿Por qué la ESI es importante?",
+     "options": [
+       "Porque forma personas libres, respetuosas e informadas",
+       "Porque reemplaza a las familias",
+       "Porque habla solo de sexo"
+     ],
+     "answerIndex": 0
+   }
+ ]

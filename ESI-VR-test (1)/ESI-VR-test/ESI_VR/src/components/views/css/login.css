@@ -1,0 +1,90 @@
+/* Centrar vertical y horizontalmente */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #75efff 0%, #46e9ff 100%);
+    font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+  }
+  
+  /* Caja del formulario */
+  .form-box {
+    background-color: #ffb6c1;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 420px;
+    border: 3px solid #ffffff;
+  }
+  
+  /* Título */
+  .form-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4caf50; /* Verde pasto */
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  /* Inputs */
+  .form-input {
+    width: 90%;
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 1.2rem;
+    border: 2px solid #b2ebff;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #f8f8f8;
+  }
+  
+  .form-input:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+    background-color: #fff;
+  }
+  
+  /* Botón */
+  .form-button {
+    width: 100%;
+    background: linear-gradient(45deg, #4caf50, #8bc34a);
+    color: white;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    box-shadow: 0 4px 0 #2e7d32;
+  }
+  
+  .form-button:hover {
+    background: linear-gradient(45deg, #43a047, #7cb342);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #2e7d32;
+  }
+  
+  .form-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #2e7d32;
+  }
+  
+  /* Error */
+  .form-error {
+    color: #f44336;
+    background-color: #ffebee;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-align: center;
+    border: 1px solid #ffcdd2;
+  }
