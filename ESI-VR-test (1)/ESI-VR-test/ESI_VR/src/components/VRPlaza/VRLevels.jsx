@@ -194,15 +194,35 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
   const scorePercentage = (score / maxRounds) * 100;
   const passed = scorePercentage >= 60; // Pasar si obtiene 60% o más (3/5 o más)
 
+  // Handlers for score screen actions (defined unconditionally)
+  const handleBackToStart = () => {
+    if (onFinish) onFinish();
+  };
+
+  const handleRestart = () => {
+    if (onRestart) onRestart();
+  };
+
+  // Attach event listeners for score screen buttons only when visible
+  useEffect(() => {
+    if (!showScoreScreen) return;
+    if (passed) {
+      // success screen uses box1Ref
+      if (box1Ref.current) box1Ref.current.addEventListener('click', handleBackToStart);
+      return () => {
+        if (box1Ref.current) box1Ref.current.removeEventListener('click', handleBackToStart);
+      };
+    } else {
+      // fail screen uses restartButtonRef
+      if (restartButtonRef.current) restartButtonRef.current.addEventListener('click', handleRestart);
+      return () => {
+        if (restartButtonRef.current) restartButtonRef.current.removeEventListener('click', handleRestart);
+      };
+    }
+  }, [showScoreScreen, passed, handleBackToStart, handleRestart]);
+
   // Pantalla de puntaje final
   if (showScoreScreen) {
-    const handleBackToStart = () => {
-      if (onFinish) onFinish();
-    };
-
-    const handleRestart = () => {
-      if (onRestart) onRestart();
-    };
 
     // Si el usuario pasó el quiz, mostrar pantalla de felicitaciones
     const successScreen = (
@@ -337,24 +357,6 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
     );
 
     const scoreScreen = passed ? successScreen : failScreen;
-
-    // Agregar event listeners para los botones de las pantallas de resultado
-    useEffect(() => {
-      if (box1Ref.current) {
-        box1Ref.current.addEventListener('click', handleBackToStart);
-      }
-      if (restartButtonRef.current) {
-        restartButtonRef.current.addEventListener('click', handleRestart);
-      }
-      return () => {
-        if (box1Ref.current) {
-          box1Ref.current.removeEventListener('click', handleBackToStart);
-        }
-        if (restartButtonRef.current) {
-          restartButtonRef.current.removeEventListener('click', handleRestart);
-        }
-      };
-    }, []);
 
     return (
       <VRPlaza
