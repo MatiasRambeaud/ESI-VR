@@ -192,28 +192,61 @@ const VRLevels = ({ onFinish }) => {
 
   const titleBg = isCorrect ? '#4CAF50' : '#f0f0f0';
 
+  // Determinar si el usuario ganó o perdió
+  const scorePercentage = (score / maxRounds) * 100;
+  const passed = scorePercentage >= 60; // Pasar si obtiene 60% o más (3/5 o más)
+
   // Pantalla de puntaje final
   if (showScoreScreen) {
     const handleBackToStart = () => {
       if (onFinish) onFinish();
     };
 
-    const scoreScreen = (
+    // Si el usuario pasó el quiz, mostrar pantalla de felicitaciones
+    const successScreen = (
       <a-entity position="0 0 0.01">
-        <a-plane color="#f0f0f0" width="1.8" height="1.5" position="0 0 -0.01" opacity="0.9"></a-plane>
+        <a-plane color="#f0f0f0" width="1.8" height="1.8" position="0 0 -0.01" opacity="0.9"></a-plane>
 
-        <a-plane color="#4CAF50" width="1.6" height="0.4" position="0 0.55 0"></a-plane>
-        <a-text value="¡Quiz Completado!" position="0 0.55 0.01" color="#fff" align="center" width="1.5"></a-text>
+        {/* Título de felicitaciones */}
+        <a-plane color="#4CAF50" width="1.6" height="0.5" position="0 0.7 0"></a-plane>
+        <a-text value="¡FELICITACIONES!" position="0 0.7 0.01" color="#fff" align="center" width="1.5" font="monoid" font-size="40"></a-text>
 
-        <a-text value={`Puntaje: ${score} / ${maxRounds}`} position="0 0.1 0" color="#333" align="center" width="1.6"></a-text>
-        
+        {/* Estadísticas */}
+        <a-text 
+          value={`Preguntas Correctas: ${score} / ${maxRounds}`} 
+          position="0 0.3 0" 
+          color="#333" 
+          align="center" 
+          width="1.6"
+          font-size="30"
+        ></a-text>
+
+        <a-text 
+          value={`Porcentaje: ${Math.round(scorePercentage)}%`} 
+          position="0 0.05 0" 
+          color="#2196F3" 
+          align="center" 
+          width="1.6"
+          font-size="28"
+        ></a-text>
+
+        <a-text 
+          value="Has completado el nivel" 
+          position="0 -0.2 0" 
+          color="#666" 
+          align="center" 
+          width="1.6"
+          font-size="24"
+        ></a-text>
+
+        {/* Estado de guardado */}
         <a-text 
           value={
             isSaving ? "Guardando puntaje..." : 
             saveError ? `Error: ${saveError}` : 
-            "Puntaje guardado exitosamente"
+            "Puntaje guardado"
           } 
-          position="0 -0.1 0" 
+          position="0 -0.45 0" 
           color={
             isSaving ? "#FF9800" : 
             saveError ? "#F44336" : 
@@ -221,11 +254,13 @@ const VRLevels = ({ onFinish }) => {
           } 
           align="center" 
           width="1.6"
+          font-size="22"
         ></a-text>
 
+        {/* Botón para volver */}
         <a-box 
           ref={box1Ref}
-          position="0 -0.4 0" 
+          position="0 -0.7 0" 
           width="1.0" 
           height="0.2" 
           depth="0.05" 
@@ -236,6 +271,70 @@ const VRLevels = ({ onFinish }) => {
         </a-box>
       </a-entity>
     );
+
+    // Si el usuario falló el quiz, mostrar pantalla de error
+    const failScreen = (
+      <a-entity position="0 0 0.01">
+        <a-plane color="#f0f0f0" width="1.8" height="1.8" position="0 0 -0.01" opacity="0.9"></a-plane>
+
+        {/* Título de error */}
+        <a-plane color="#F44336" width="1.6" height="0.5" position="0 0.7 0"></a-plane>
+        <a-text value="Te equivocaste" position="0 0.7 0.01" color="#fff" align="center" width="1.5" font="monoid" font-size="40"></a-text>
+
+        {/* Estadísticas */}
+        <a-text 
+          value={`Respuestas Correctas: ${score} / ${maxRounds}`} 
+          position="0 0.3 0" 
+          color="#333" 
+          align="center" 
+          width="1.6"
+          font-size="30"
+        ></a-text>
+
+        <a-text 
+          value={`Porcentaje: ${Math.round(scorePercentage)}%`} 
+          position="0 0.05 0" 
+          color="#F44336" 
+          align="center" 
+          width="1.6"
+          font-size="28"
+        ></a-text>
+
+        <a-text 
+          value="Necesitas al menos 60% para pasar" 
+          position="0 -0.2 0" 
+          color="#666" 
+          align="center" 
+          width="1.6"
+          font-size="24"
+        ></a-text>
+
+        {/* Mensaje de motivación */}
+        <a-text 
+          value="¡No te rindas! Inténtalo de nuevo" 
+          position="0 -0.45 0" 
+          color="#FF9800" 
+          align="center" 
+          width="1.6"
+          font-size="22"
+        ></a-text>
+
+        {/* Botón para volver */}
+        <a-box 
+          ref={box1Ref}
+          position="0 -0.7 0" 
+          width="1.0" 
+          height="0.2" 
+          depth="0.05" 
+          color="#2196F3" 
+          class="clickable"
+        >
+          <a-text value="Intentar Nuevamente" position="0 0 0.026" color="#fff" align="center" width="1.0"></a-text>
+        </a-box>
+      </a-entity>
+    );
+
+    const scoreScreen = passed ? successScreen : failScreen;
 
     // Agregar event listener para el botón de volver
     useEffect(() => {
