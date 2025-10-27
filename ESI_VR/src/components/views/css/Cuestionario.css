@@ -1,0 +1,148 @@
+.contenedor-cuestionario {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.cuestionario-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.titulo-cuestionario {
+  font-size: 2.5rem;
+  color: white;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.progress-info {
+  color: white;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+.pregunta-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.pregunta-box {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  width: 100%;
+}
+
+.pregunta-texto {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.opciones-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.opcion-btn {
+  background: #f8f9fa;
+  border: 3px solid #dee2e6;
+  border-radius: 12px;
+  padding: 20px;
+  font-size: 1.1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #333;
+  font-weight: 500;
+}
+
+.opcion-btn:hover {
+  background: #e9ecef;
+  border-color: #667eea;
+  transform: translateX(5px);
+}
+
+.opcion-btn.selected {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;
+  transform: translateX(10px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.cuestionario-navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 50px;
+  gap: 20px;
+}
+
+.btn-nav {
+  padding: 15px 40px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  color: #333;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-nav:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-nav:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-nav.btn-primary {
+  background: #764ba2;
+  color: white;
+}
+
+.btn-nav.btn-primary:hover:not(:disabled) {
+  background: #5a3691;
+}
+
+@media (max-width: 768px) {
+  .pregunta-box {
+    padding: 30px 20px;
+  }
+
+  .pregunta-texto {
+    font-size: 1.2rem;
+  }
+
+  .opcion-btn {
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .cuestionario-navigation {
+    padding: 20px;
+  }
+
+  .btn-nav {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+
