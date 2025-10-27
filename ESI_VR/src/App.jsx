@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import VRLogin from './components/VRPlaza/VRLogin';
 import VRLevels from './components/VRPlaza/VRLevels';
 
-function App() {
+function AppContent() {
+  const { user } = useAuth();
   const [view, setView] = useState('login');
 
   if (view === 'levels') {
@@ -19,6 +21,14 @@ function App() {
       onBack={() => {}}
       onProfile={() => {}}
     />
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
 
