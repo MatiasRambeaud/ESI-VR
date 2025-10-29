@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import VRLogin from './components/VRPlaza/VRLogin';
 import VRLevels from './components/VRPlaza/VRLevels';
 import VRHistorialPuntajes from './components/VRPlaza/VRHistorialPuntajes';
+import VRLeaderboard from './components/VRPlaza/VRLeaderboard';
 import VRPlaza from './components/VRPlaza/VRPlaza';
 
 function AppContent() {
@@ -30,6 +31,7 @@ function AppContent() {
         nivelEducativo={selectedNivel}
         onFinish={() => setView('login')}
         onRestart={() => setView('selectLevel')}
+        onBack={() => setView('selectLevel')}
       />
     );
   }
@@ -43,6 +45,15 @@ function AppContent() {
     );
   }
 
+  // Vista de leaderboard
+  if (view === 'leaderboard') {
+    return (
+      <VRLeaderboard
+        onBack={() => setView('login')}
+      />
+    );
+  }
+
   // Vista de login (inicial)
   return (
     <VRLogin
@@ -50,6 +61,7 @@ function AppContent() {
       onBack={() => {}}
       onProfile={() => {}}
       onHistorial={() => setView('historial')}
+      onLeaderboard={() => setView('leaderboard')}
     />
   );
 }

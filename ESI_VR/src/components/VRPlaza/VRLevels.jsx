@@ -13,7 +13,7 @@ const pickRandomIndices = (total, count) => {
   return indices.slice(0, Math.min(count, total));
 };
 
-const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
+const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
   const { user } = useAuth();
   const { 
     guardarPuntaje, 
@@ -194,15 +194,35 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
   const scorePercentage = (score / maxRounds) * 100;
   const passed = scorePercentage >= 60; // Pasar si obtiene 60% o más (3/5 o más)
 
+  // Handlers for score screen actions (defined unconditionally)
+  const handleBackToStart = () => {
+    if (onFinish) onFinish();
+  };
+
+  const handleRestart = () => {
+    if (onRestart) onRestart();
+  };
+
+  // Attach event listeners for score screen buttons only when visible
+  useEffect(() => {
+    if (!showScoreScreen) return;
+    if (passed) {
+      // success screen uses box1Ref
+      if (box1Ref.current) box1Ref.current.addEventListener('click', handleBackToStart);
+      return () => {
+        if (box1Ref.current) box1Ref.current.removeEventListener('click', handleBackToStart);
+      };
+    } else {
+      // fail screen uses restartButtonRef
+      if (restartButtonRef.current) restartButtonRef.current.addEventListener('click', handleRestart);
+      return () => {
+        if (restartButtonRef.current) restartButtonRef.current.removeEventListener('click', handleRestart);
+      };
+    }
+  }, [showScoreScreen, passed, handleBackToStart, handleRestart]);
+
   // Pantalla de puntaje final
   if (showScoreScreen) {
-    const handleBackToStart = () => {
-      if (onFinish) onFinish();
-    };
-
-    const handleRestart = () => {
-      if (onRestart) onRestart();
-    };
 
     // Si el usuario pasó el quiz, mostrar pantalla de felicitaciones
     const successScreen = (
@@ -338,27 +358,9 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
 
     const scoreScreen = passed ? successScreen : failScreen;
 
-    // Agregar event listeners para los botones de las pantallas de resultado
-    useEffect(() => {
-      if (box1Ref.current) {
-        box1Ref.current.addEventListener('click', handleBackToStart);
-      }
-      if (restartButtonRef.current) {
-        restartButtonRef.current.addEventListener('click', handleRestart);
-      }
-      return () => {
-        if (box1Ref.current) {
-          box1Ref.current.removeEventListener('click', handleBackToStart);
-        }
-        if (restartButtonRef.current) {
-          restartButtonRef.current.removeEventListener('click', handleRestart);
-        }
-      };
-    }, []);
-
     return (
       <VRPlaza
-        onBack={onFinish}
+        onBack={onBack || onFinish}
         onProfile={() => {}}
         onSelectLevel={() => {}}
       >
@@ -389,7 +391,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
         width="1.6" 
         height="0.4" 
         position="0 0.55 0"
-        animation={showFeedback ? `property: color; to: ${isCorrect ? '#4CAF50' : '#F44336'}; dur: 300; easing: easeInOut` : ''}
+        animation={showFeedback ? `property: color; to: ${isCorrect ? '#4CAF50' : '#F44336'}; dur: 300; easing: easeInOutSine` : ''}
       ></a-plane>
       <a-text 
         value={currentQuestion ? currentQuestion.question : 'Cargando...'} 
@@ -409,7 +411,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
           align="center" 
           width="1.6"
           font-size="36"
-          animation="property: opacity; from: 0; to: 1; dur: 300; easing: easeOut"
+          animation="property: opacity; from: 0; to: 1; dur: 300; easing: easeOutQuad"
         ></a-text>
       )}
 
@@ -423,7 +425,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
         color="#ffffff" 
         class="clickable"
         events="mouseenter: scale: 1.02 1.02 1.02; mouseleave: scale: 1 1 1"
-        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOut" : ""}
+        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOutSine" : ""}
       >
         <a-text value={currentQuestion ? currentQuestion.options[0] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></a-text>
       </a-box>
@@ -438,7 +440,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
         color="#ffffff" 
         class="clickable"
         events="mouseenter: scale: 1.02 1.02 1.02; mouseleave: scale: 1 1 1"
-        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOut" : ""}
+        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOutSine" : ""}
       >
         <a-text value={currentQuestion ? currentQuestion.options[1] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></a-text>
       </a-box>
@@ -453,7 +455,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
         color="#ffffff" 
         class="clickable"
         events="mouseenter: scale: 1.02 1.02 1.02; mouseleave: scale: 1 1 1"
-        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOut" : ""}
+        animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOutSine" : ""}
       >
         <a-text value={currentQuestion ? currentQuestion.options[2] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></a-text>
       </a-box>
@@ -483,7 +485,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart }) => {
 
   return (
     <VRPlaza
-      onBack={onFinish}
+      onBack={onBack || onFinish}
       onProfile={() => {}}
       onSelectLevel={() => {}}
     >

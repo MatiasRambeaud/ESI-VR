@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { collection, addDoc, query, where, orderBy, getDocs, serverTimestamp, doc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import { useAuth } from '../context/AuthContext';
@@ -8,6 +8,7 @@ export const usePuntajes = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [puntajes, setPuntajes] = useState([]);
+  const historialHasLoadedRef = useRef({ userId: null, loaded: false });
 
   // Función para guardar un puntaje
   const guardarPuntaje = async (scoreData) => {
@@ -58,8 +59,7 @@ export const usePuntajes = () => {
       const puntajesRef = collection(db, 'puntajes');
       const q = query(
         puntajesRef,
-        where('userId', '==', user.uid),
-        orderBy('timestamp', 'desc')
+        where('userId', '==', user.uid)
       );
 
       const querySnapshot = await getDocs(q);
@@ -72,10 +72,18 @@ export const usePuntajes = () => {
         });
       });
 
+      // Ordenar en el cliente por timestamp (o createdAt) descendente para evitar índices compuestos
+      puntajesData.sort((a, b) => {
+        const ta = a.timestamp?.toMillis?.() ?? new Date(a.createdAt).getTime();
+        const tb = b.timestamp?.toMillis?.() ?? new Date(b.createdAt).getTime();
+        return tb - ta;
+      });
+
       setPuntajes(puntajesData);
       
       return puntajesData;
     } catch (error) {
+      console.log(error)
       console.error('Error al obtener el historial de puntajes:', error);
       setError('Error al obtener el historial: ' + error.message);
       return [];
@@ -184,12 +192,66 @@ export const usePuntajes = () => {
     setError(null);
   };
 
-  // Cargar historial automáticamente cuando el usuario cambie
+  // Leaderboard global: Top 10 mejores puntajes (mejor intento por usuario)
+  const obtenerLeaderboardTop10 = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const puntajesRef = collection(db, 'puntajes');
+      // Sin where/orderBy para evitar requerir índices compuestos
+      const snapshot = await getDocs(puntajesRef);
+
+      // Agrupar por userId y quedarnos con el mejor score por usuario
+      const porUsuario = new Map();
+      snapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        const key = data.userId || data.email || docSnap.id;
+        const actual = porUsuario.get(key);
+        if (!actual || (data.score ?? 0) > (actual.score ?? 0)) {
+          porUsuario.set(key, {
+            userId: data.userId || null,
+            email: data.email || 'Usuario',
+            score: data.score ?? 0,
+            totalQuestions: data.totalQuestions ?? 0,
+            createdAt: data.createdAt || null,
+            timestamp: data.timestamp || null
+          });
+        }
+      });
+
+      const lista = Array.from(porUsuario.values());
+      // Ordenar por score desc, luego por fecha desc como tie-breaker
+      lista.sort((a, b) => {
+        if ((b.score ?? 0) !== (a.score ?? 0)) return (b.score ?? 0) - (a.score ?? 0);
+        const ta = a.timestamp?.toMillis?.() ?? (a.createdAt ? new Date(a.createdAt).getTime() : 0);
+        const tb = b.timestamp?.toMillis?.() ?? (b.createdAt ? new Date(b.createdAt).getTime() : 0);
+        return tb - ta;
+      });
+
+      return lista.slice(0, 10);
+    } catch (error) {
+      console.error('Error al obtener leaderboard:', error);
+      setError('Error al obtener leaderboard: ' + error.message);
+      return [];
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Cargar historial automáticamente sólo una vez por usuario
   useEffect(() => {
     if (user) {
-      obtenerHistorialPuntajes();
+      if (historialHasLoadedRef.current.userId !== user.uid) {
+        historialHasLoadedRef.current = { userId: user.uid, loaded: false };
+      }
+      if (!historialHasLoadedRef.current.loaded) {
+        historialHasLoadedRef.current.loaded = true;
+        obtenerHistorialPuntajes();
+      }
     } else {
       setPuntajes([]);
+      historialHasLoadedRef.current = { userId: null, loaded: false };
     }
   }, [user]);
 
@@ -204,6 +266,7 @@ export const usePuntajes = () => {
     obtenerHistorialPuntajes,
     obtenerEstadisticas,
     limpiarError,
+    obtenerLeaderboardTop10,
     // Nuevas funciones para tiempo real
     guardarRespuestaIndividual,
     actualizarPuntajeRealTime

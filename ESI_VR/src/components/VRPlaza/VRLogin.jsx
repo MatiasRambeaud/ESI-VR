@@ -4,7 +4,7 @@ import { signInWithPopup, signOut } from 'firebase/auth';
 import { auth, googleProvider } from '../../firebase/firebase';
 import { useAuth } from '../../context/AuthContext';
 
-const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial }) => {
+const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard }) => {
   const { user } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -19,6 +19,7 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial }) => {
   const loginButtonRef = useRef(null);
   const googleButtonRef = useRef(null);
   const historialButtonRef = useRef(null);
+  const leaderboardButtonRef = useRef(null);
 
   useEffect(() => {
     // Event listeners para A-Frame
@@ -68,6 +69,11 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial }) => {
       if (onHistorial) onHistorial();
     };
 
+    const handleLeaderboardClick = () => {
+      console.log('Botón leaderboard clickeado');
+      if (onLeaderboard) onLeaderboard();
+    };
+
     // Agregar event listeners
     if (usernameRef.current) {
       usernameRef.current.addEventListener('click', handleUsernameClick);
@@ -87,6 +93,9 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial }) => {
     }
     if (historialButtonRef.current) {
       historialButtonRef.current.addEventListener('click', handleHistorialClick);
+    }
+    if (leaderboardButtonRef.current) {
+      leaderboardButtonRef.current.addEventListener('click', handleLeaderboardClick);
     }
 
     // Cleanup
@@ -109,6 +118,9 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial }) => {
       }
       if (historialButtonRef.current) {
         historialButtonRef.current.removeEventListener('click', handleHistorialClick);
+      }
+      if (leaderboardButtonRef.current) {
+        leaderboardButtonRef.current.removeEventListener('click', handleLeaderboardClick);
       }
     };
   }, [username, password, user]);
@@ -236,7 +248,7 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial }) => {
         <a-box
           ref={historialButtonRef}
           id="historial-button"
-          position="0 -0.5 0"
+          position="0 -0.45 0"
           width="1.0"
           height="0.2"
           depth="0.05"
@@ -253,11 +265,32 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial }) => {
           ></a-text>
         </a-box>
 
+        {/* Botón para ver leaderboard */}
+        <a-box
+          ref={leaderboardButtonRef}
+          id="leaderboard-button"
+          position="0 -0.7 0"
+          width="1.0"
+          height="0.2"
+          depth="0.05"
+          color="#FF9800"
+          class="clickable"
+          events="mouseenter: scale: 1.05 1.05 1.05; mouseleave: scale: 1 1 1"
+        >
+          <a-text
+            value="Leaderboard"
+            position="0 0 0.026"
+            color="#fff"
+            align="center"
+            width="0.8"
+          ></a-text>
+        </a-box>
+
         {/* Botón para cerrar sesión */}
         <a-box
           ref={googleButtonRef}
           id="logout-button"
-          position="0 -0.8 0"
+          position="0 -1.0 0"
           width="1.0"
           height="0.2"
           depth="0.05"
