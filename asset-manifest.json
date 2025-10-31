@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/ESI-VR/static/js/main.2003e02e.js",
+    "index.html": "/ESI-VR/index.html",
+    "main.2003e02e.js.map": "/ESI-VR/static/js/main.2003e02e.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.2003e02e.js"
+  ]
+}
