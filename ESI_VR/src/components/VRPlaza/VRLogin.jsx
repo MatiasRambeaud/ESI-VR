@@ -6,16 +6,9 @@ import { useAuth } from '../../context/AuthContext';
 
 const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard }) => {
   const { user } = useAuth();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [isEditingUsername, setIsEditingUsername] = useState(false);
-  const [isEditingPassword, setIsEditingPassword] = useState(false);
-  const [currentInput, setCurrentInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
   const loginButtonRef = useRef(null);
   const googleButtonRef = useRef(null);
   const historialButtonRef = useRef(null);
@@ -23,34 +16,10 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
 
   useEffect(() => {
     // Event listeners para A-Frame
-    const handleUsernameClick = () => {
-      setIsEditingUsername(true);
-      setIsEditingPassword(false);
-      setCurrentInput(username);
-      setError('');
-      console.log('Campo usuario clickeado');
-    };
-
-    const handlePasswordClick = () => {
-      setIsEditingPassword(true);
-      setIsEditingUsername(false);
-      setCurrentInput(password);
-      setError('');
-      console.log('Campo contraseña clickeado');
-    };
-
     const handleLoginClick = () => {
-      console.log('Botón login clickeado');
+      console.log('Botón start quiz clickeado');
       if (user) {
-        // Si el usuario está autenticado, este botón inicia el quiz
-        console.log('Iniciando quiz');
         onSelectLevel();
-      } else if (username && password) {
-        console.log('Iniciando sesión con:', { username, password });
-        setError('');
-        // Aquí iría la lógica de autenticación real
-      } else {
-        setError('Por favor, completa todos los campos');
       }
     };
 
@@ -75,12 +44,6 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
     };
 
     // Agregar event listeners
-    if (usernameRef.current) {
-      usernameRef.current.addEventListener('click', handleUsernameClick);
-    }
-    if (passwordRef.current) {
-      passwordRef.current.addEventListener('click', handlePasswordClick);
-    }
     if (loginButtonRef.current) {
       loginButtonRef.current.addEventListener('click', handleLoginClick);
     }
@@ -100,12 +63,6 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
 
     // Cleanup
     return () => {
-      if (usernameRef.current) {
-        usernameRef.current.removeEventListener('click', handleUsernameClick);
-      }
-      if (passwordRef.current) {
-        passwordRef.current.removeEventListener('click', handlePasswordClick);
-      }
       if (loginButtonRef.current) {
         loginButtonRef.current.removeEventListener('click', handleLoginClick);
       }
@@ -123,57 +80,9 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
         leaderboardButtonRef.current.removeEventListener('click', handleLeaderboardClick);
       }
     };
-  }, [username, password, user]);
+  }, [user]);
 
-  // Funciones para manejar input de teclado
-  const handleKeyPress = (key) => {
-    if (isEditingUsername) {
-      if (key === 'Backspace') {
-        setUsername(prev => prev.slice(0, -1));
-        setCurrentInput(prev => prev.slice(0, -1));
-      } else if (key === 'Enter') {
-        setIsEditingUsername(false);
-        setCurrentInput('');
-      } else if (key.length === 1) {
-        setUsername(prev => prev + key);
-        setCurrentInput(prev => prev + key);
-      }
-    } else if (isEditingPassword) {
-      if (key === 'Backspace') {
-        setPassword(prev => prev.slice(0, -1));
-        setCurrentInput(prev => prev.slice(0, -1));
-      } else if (key === 'Enter') {
-        setIsEditingPassword(false);
-        setCurrentInput('');
-      } else if (key.length === 1) {
-        setPassword(prev => prev + key);
-        setCurrentInput(prev => prev + key);
-      }
-    }
-  };
-
-  // Event listener global para teclado
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (isEditingUsername || isEditingPassword) {
-        if (event.key === 'f' || event.key === 'F') {
-          event.preventDefault();
-          if (event.stopImmediatePropagation) event.stopImmediatePropagation();
-          event.stopPropagation();
-        }
-        if (event.key === 'Backspace') {
-          handleKeyPress('Backspace');
-        } else if (event.key === 'Enter') {
-          handleKeyPress('Enter');
-        } else if (event.key.length === 1 && !event.ctrlKey && !event.altKey) {
-          handleKeyPress(event.key);
-        }
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isEditingUsername, isEditingPassword]);
+  // Eliminado: manejo de teclado para inputs manuales, solo Google Sign-In
 
   // Función para iniciar sesión con Google
   const handleGoogleSignIn = async () => {
@@ -335,95 +244,18 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
 
       {/* Título */}
       <a-text
-        value="Iniciar Sesion"
+        value="Iniciar Sesión"
         position="0 0.6 0"
         color="#333"
         align="center"
         width="1.8"
       ></a-text>
 
-      {/* Campo de usuario */}
-      <a-text
-        value="Usuario:"
-        position="-0.7 0.2 0"
-        color="#333"
-        align="left"
-        width="0.8"
-      ></a-text>
-      <a-box
-        ref={usernameRef}
-        id="username-input"
-        position="0.4 0.2 0"
-        width="0.8"
-        height="0.2"
-        depth="0.05"
-        color={isEditingUsername ? "#4CAF50" : "#fff"}
-        class="clickable"
-        events="mouseenter: scale: 1.05 1.05 1.05; mouseleave: scale: 1 1 1"
-      >
-        <a-text
-          value={username || (isEditingUsername ? "Escribiendo..." : "Click para escribir")}
-          position="0 0 0.026"
-          color="#000"
-          align="center"
-          width="0.8"
-        ></a-text>
-      </a-box>
-
-      {/* Campo de contraseña */}
-      <a-text
-        value="Contrasena:"
-        position="-0.7 -0.2 0"
-        color="#333"
-        align="left"
-        width="1.0"
-      ></a-text>
-      <a-box
-        ref={passwordRef}
-        id="password-input"
-        position="0.4 -0.2 0"
-        width="0.8"
-        height="0.2"
-        depth="0.05"
-        color={isEditingPassword ? "#4CAF50" : "#fff"}
-        class="clickable"
-        events="mouseenter: scale: 1.05 1.05 1.05; mouseleave: scale: 1 1 1"
-      >
-        <a-text
-          value={password ? '*'.repeat(password.length) : (isEditingPassword ? "Escribiendo..." : "Click para escribir")}
-          position="0 0 0.026"
-          color="#000"
-          align="center"
-          width="0.8"
-        ></a-text>
-      </a-box>
-
-      {/* Botón de inicio de sesión */}
-      <a-box
-        ref={loginButtonRef}
-        id="login-button"
-        position="0 -0.6 0"
-        width="1.0"
-        height="0.2"
-        depth="0.05"
-        color="#2196F3"
-        class="clickable"
-        events="mouseenter: scale: 1.05 1.05 1.05; mouseleave: scale: 1 1 1"
-      >
-        <a-text
-          value="Ingresar"
-          position="0 0 0.026"
-          color="#fff"
-          align="center"
-          width="1.0"
-        ></a-text>
-      </a-box>
-
       {/* Botón de Google Sign-In */}
       <a-box
         ref={googleButtonRef}
         id="google-signin-button"
-        position="0 -0.9 0"
+        position="0 -0.2 0"
         width="1.0"
         height="0.2"
         depth="0.05"
@@ -444,31 +276,12 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
       {error && (
         <a-text
           value={error.length > 50 ? error.substring(0, 50) + '...' : error}
-          position="0 -0.4 0"
+          position="0 -0.45 0"
           color="red"
           align="center"
           width="1.6"
           wrap-count="20"
         ></a-text>
-      )}
-
-      {/* Indicador de edición */}
-      {(isEditingUsername || isEditingPassword) && (
-        <a-entity position="0 -1.2 0">
-          <a-text
-            value={`Editando ${isEditingUsername ? 'usuario' : 'contraseña'}: ${currentInput}`}
-            color="#2196F3"
-            align="center"
-            width="2"
-          ></a-text>
-          <a-text
-            value="Presiona Enter para confirmar o Backspace para borrar"
-            position="0 -0.1 0"
-            color="#666"
-            align="center"
-            width="2"
-          ></a-text>
-        </a-entity>
       )}
     </a-entity>
   );
@@ -478,7 +291,7 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
       onBack={onBack}
       onProfile={onProfile}
       onSelectLevel={onSelectLevel}
-      movementLocked={isEditingUsername || isEditingPassword}
+      movementLocked={false}
     >
       {loginForm}
     </VRPlaza>
