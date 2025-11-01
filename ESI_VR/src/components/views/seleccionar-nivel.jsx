@@ -17,7 +17,7 @@ export default function SeleccionarNivel() {
       <main className="main-content">
         <button className="btn">Ir al perfil</button>
         <button className="btn green">Seleccionar nivel</button>
-        <img src="/seleccionar_nivel.png" alt="niño" className="avatar" />
+        <img src="/seleccionar_nivel.png" alt="chico" className="avatar" />
       </main>
 
       <footer className="footer">

@@ -1,19 +1,19 @@
 [
    {
-     "question": "¿Qué significa ESI?",
+     "question": "Que significa ESI?",
      "options": [
-       "Educación Sexual Integral",
+       "Educacion Sexual Integral",
        "Escuela de Salud Infantil",
-       "Enseñanza Social Inclusiva"
+       "Ensenanza Social Inclusiva"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Cuál es el objetivo principal de la ESI?",
+     "question": "Cual es el objetivo principal de la ESI?",
      "options": [
        "Promover valores religiosos",
-       "Brindar información científica y respeto por los demás",
-       "Enseñar biología únicamente"
+       "Brindar informacion cientifica y respeto por los demas",
+       "Ensenar biologia unicamente"
      ],
      "answerIndex": 1
    },
@@ -21,13 +21,13 @@
      "question": "La ESI busca educar en:",
      "options": [
        "Cuerpo, emociones, derechos y respeto",
-       "Solo anatomía",
+       "Solo anatomia",
        "Deportes"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Desde qué edad se enseña ESI?",
+     "question": "Desde que edad se ensena ESI?",
      "options": [
        "Solo en secundaria",
        "Desde el nivel inicial",
@@ -36,7 +36,7 @@
      "answerIndex": 1
    },
    {
-     "question": "¿Qué ley establece la ESI en Argentina?",
+     "question": "Que ley establece la ESI en Argentina?",
      "options": [
        "Ley 26.150",
        "Ley 24.195",
@@ -49,14 +49,14 @@
      "options": [
        "Integral y con perspectiva de derechos",
        "Basada en castigos",
-       "Parcial y biológica"
+       "Parcial y biologica"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Quiénes deben enseñar ESI?",
+     "question": "Quienes deben ensenar ESI?",
      "options": [
-       "Solo médicos",
+       "Solo medicos",
        "Todo el personal docente",
        "Los padres exclusivamente"
      ],
@@ -66,24 +66,24 @@
      "question": "La ESI busca prevenir:",
      "options": [
        "Solo enfermedades",
-       "Violencias, abusos y discriminación",
-       "El uso de tecnología"
+       "Violencias, abusos y discriminacion",
+       "El uso de tecnologia"
      ],
      "answerIndex": 1
    },
    {
-     "question": "Una educación integral considera:",
+     "question": "Una educacion integral considera:",
      "options": [
-       "Lo biológico, psicológico y social",
+       "Lo biologico, psicologico y social",
        "Solo lo emocional",
        "Solo lo moral"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué valor promueve la ESI?",
+     "question": "Que valor promueve la ESI?",
      "options": [
-       "La igualdad de género",
+       "La igualdad de genero",
        "La competencia",
        "El silencio"
      ],
@@ -108,16 +108,16 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué sucede en la pubertad?",
+     "question": "Que sucede en la pubertad?",
      "options": [
-       "Cambios físicos y emocionales",
-       "Ningún cambio",
+       "Cambios fisicos y emocionales",
+       "Ningun cambio",
        "Solo crece el cabello"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Por qué es importante la higiene personal?",
+     "question": "Por que es importante la higiene personal?",
      "options": [
        "Por salud y bienestar",
        "Por moda",
@@ -126,25 +126,25 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué órgano produce las hormonas sexuales femeninas?",
+     "question": "Que organo produce las hormonas sexuales femeninas?",
      "options": [
        "Ovarios",
-       "Páncreas",
-       "Hígado"
+       "Pancreas",
+       "Higado"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué órgano produce las hormonas sexuales masculinas?",
+     "question": "Que organo produce las hormonas sexuales masculinas?",
      "options": [
-       "Testículos",
-       "Corazón",
-       "Riñón"
+       "Testiculos",
+       "Corazon",
+       "Organo renal"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué es el ciclo menstrual?",
+     "question": "Que es el ciclo menstrual?",
      "options": [
        "Un proceso natural del cuerpo femenino",
        "Una enfermedad",
@@ -153,28 +153,28 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué ayuda a prevenir las ITS?",
+     "question": "Que ayuda a prevenir las ITS?",
      "options": [
        "El uso del preservativo",
-       "Bañarse todos los días",
+       "Asearse todos los dias",
        "No hablar del tema"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué es el consentimiento?",
+     "question": "Que es el consentimiento?",
      "options": [
-       "Aceptar libremente una situación",
+       "Aceptar libremente una situacion",
        "Quedarse callado",
        "Hacer lo que otros dicen"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Quién tiene derecho a decidir sobre su cuerpo?",
+     "question": "Quien tiene derecho a decidir sobre su cuerpo?",
      "options": [
        "Cada persona",
-       "Los demás",
+       "Los demas",
        "Solo los adultos"
      ],
      "answerIndex": 0
@@ -189,7 +189,7 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué es el respeto?",
+     "question": "Que es el respeto?",
      "options": [
        "Reconocer al otro como igual",
        "Ignorar lo que siente",
@@ -198,9 +198,9 @@
      "answerIndex": 0
    },
    {
-     "question": "En una relación sana debe haber:",
+     "question": "En una relacion sana debe haber:",
      "options": [
-       "Diálogo, confianza y respeto",
+       "Dialogo, confianza y respeto",
        "Control y celos",
        "Mentiras"
      ],
@@ -209,41 +209,41 @@
    {
      "question": "Los celos son:",
      "options": [
-       "Señal de amor",
+       "Indicio de amor",
        "Falta de confianza",
        "Algo normal y positivo"
      ],
      "answerIndex": 1
    },
    {
-     "question": "La empatía es:",
+     "question": "La empatia es:",
      "options": [
        "Ponerse en el lugar del otro",
-       "Mandar sobre los demás",
+       "Mandar sobre los demas",
        "Ignorar sentimientos ajenos"
      ],
      "answerIndex": 0
    },
    {
-     "question": "Un vínculo tóxico se caracteriza por:",
+     "question": "Un vinculo toxico se caracteriza por:",
      "options": [
-       "Control, manipulación o violencia",
+       "Control, manipulacion o violencia",
        "Respeto",
-       "Diálogo"
+       "Dialogo"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué es la autoestima?",
+     "question": "Que es la autoestima?",
      "options": [
        "Valorarse a uno mismo",
-       "Pensar mal de los demás",
-       "Ser egoísta"
+       "Pensar mal de los demas",
+       "Ser egoista"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué ayuda a mejorar la autoestima?",
+     "question": "Que ayuda a mejorar la autoestima?",
      "options": [
        "Aceptarse y cuidarse",
        "Compararse",
@@ -252,34 +252,34 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué se necesita para una buena comunicación?",
+     "question": "Que se necesita para una buena comunicacion?",
      "options": [
        "Escucha y respeto",
        "Interrumpir al otro",
-       "Gritar más fuerte"
+       "Gritar mas fuerte"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué hacer si un amigo está triste?",
+     "question": "Que hacer si un amigo esta triste?",
      "options": [
-       "Escucharlo y acompañarlo",
-       "Reírse",
+       "Escucharlo y apoyarlo",
+       "Reirse",
        "Ignorarlo"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué es el género?",
+     "question": "Que es el genero?",
      "options": [
-       "Una construcción social sobre lo masculino y femenino",
-       "El sexo biológico",
+       "Una construccion social sobre lo masculino y femenino",
+       "El sexo biologico",
        "Una moda"
      ],
      "answerIndex": 0
    },
    {
-     "question": "La igualdad de género significa:",
+     "question": "La igualdad de genero significa:",
      "options": [
        "Mismos derechos y oportunidades para todos",
        "Tratar mejor a los hombres",
@@ -288,28 +288,28 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué es un estereotipo de género?",
+     "question": "Que es un estereotipo de genero?",
      "options": [
-       "Una idea fija sobre cómo deben ser hombres y mujeres",
-       "Un rasgo biológico",
-       "Una profesión"
+       "Una idea fija sobre como deben ser hombres y mujeres",
+       "Un rasgo biologico",
+       "Una profesion"
      ],
      "answerIndex": 0
    },
    {
      "question": "Un ejemplo de estereotipo:",
      "options": [
-       "“Las mujeres no saben conducir”",
-       "“Todos pueden aprender”",
-       "“Cada persona es distinta”"
+       "Las mujeres no saben conducir",
+       "Todos pueden aprender",
+       "Cada persona es distinta"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué promueve la ESI sobre la diversidad?",
+     "question": "Que promueve la ESI sobre la diversidad?",
      "options": [
-       "El respeto y la inclusión",
-       "La discriminación",
+       "El respeto y la inclusion",
+       "La discriminacion",
        "El silencio"
      ],
      "answerIndex": 0
@@ -324,27 +324,27 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué es la identidad de género?",
+     "question": "Que es la identidad de genero?",
      "options": [
-       "Cómo cada persona se siente y se identifica",
+       "Como cada persona se siente y se identifica",
        "El nombre de nacimiento",
        "El color de piel"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué es la orientación sexual?",
+     "question": "Que es la orientacion sexual?",
      "options": [
-       "Atracción afectiva o sexual hacia otras personas",
-       "Una elección obligatoria",
-       "Un diagnóstico médico"
+       "Atraccion afectiva o sexual hacia otras personas",
+       "Una eleccion obligatoria",
+       "Un diagnostico medico"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué se debe hacer frente a la discriminación?",
+     "question": "Que se debe hacer frente a la discriminacion?",
      "options": [
-       "Denunciarla y acompañar",
+       "Denunciarla y apoyar",
        "Participar en ella",
        "Ignorarla"
      ],
@@ -363,13 +363,13 @@
      "question": "La ESI se basa en el respeto a:",
      "options": [
        "Los derechos humanos",
-       "Las opiniones únicas",
+       "Las opiniones unicas",
        "Las imposiciones"
      ],
      "answerIndex": 0
    },
    {
-     "question": "Todos los niños, niñas y adolescentes tienen derecho a:",
+     "question": "Todos los chicos, chicas y adolescentes tienen derecho a:",
      "options": [
        "Recibir ESI",
        "No aprender sobre su cuerpo",
@@ -382,12 +382,12 @@
      "options": [
        "Decidir libremente sobre la vida afectiva y corporal",
        "Hacer lo que otros dicen",
-       "Ocultar información"
+       "Ocultar informacion"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué hacer ante un caso de abuso?",
+     "question": "Que hacer ante un caso de abuso?",
      "options": [
        "Contar a un adulto de confianza o autoridad",
        "Guardar silencio",
@@ -405,43 +405,43 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué organismos protegen derechos de niños/as?",
+     "question": "Que organismos protegen derechos de chicos/as?",
      "options": [
-       "Línea 102, escuelas, justicia",
+       "Linea 102, escuelas, justicia",
        "Solo la familia",
        "Nadie"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué valores promueve la ESI?",
+     "question": "Que valores promueve la ESI?",
      "options": [
-       "Respeto, igualdad, empatía",
+       "Respeto, igualdad, empatia",
        "Competencia, silencio",
        "Desigualdad"
      ],
      "answerIndex": 0
    },
    {
-     "question": "La educación en derechos ayuda a:",
+     "question": "La educacion en derechos ayuda a:",
      "options": [
        "Convivir mejor",
-       "Discutir más",
+       "Discutir mas",
        "No respetar a otros"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué debe hacer la escuela frente a la violencia?",
+     "question": "Que debe hacer la escuela frente a la violencia?",
      "options": [
        "Intervenir, contener y denunciar",
        "Ignorarla",
-       "Castigar a la víctima"
+       "Castigar a la victima"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Por qué es importante hablar de ESI?",
+     "question": "Por que es importante hablar de ESI?",
      "options": [
        "Porque informa y previene situaciones de riesgo",
        "Porque incomoda",
@@ -452,7 +452,7 @@
    {
      "question": "Cuidar el cuerpo implica:",
      "options": [
-       "Buena alimentación, higiene y descanso",
+       "Buena alimentacion, higiene y descanso",
        "Ignorarlo",
        "Hacer lo que otros dicen"
      ],
@@ -461,14 +461,14 @@
    {
      "question": "Dormir bien es importante para:",
      "options": [
-       "La salud física y mental",
+       "La salud fisica y mental",
        "Perder tiempo",
-       "Ver televisión"
+       "Ver television"
      ],
      "answerIndex": 0
    },
    {
-     "question": "Una alimentación saludable incluye:",
+     "question": "Una alimentacion saludable incluye:",
      "options": [
        "Frutas, verduras y agua",
        "Solo golosinas",
@@ -477,7 +477,7 @@
      "answerIndex": 0
    },
    {
-     "question": "Hacer actividad física ayuda a:",
+     "question": "Hacer actividad fisica ayuda a:",
      "options": [
        "Mantener el bienestar",
        "Cansarse",
@@ -486,7 +486,7 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué es el autocuidado?",
+     "question": "Que es el autocuidado?",
      "options": [
        "Conocerse, cuidarse y respetarse",
        "Aislarse",
@@ -495,34 +495,34 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué hacer ante una situación incómoda?",
+     "question": "Que hacer ante una situacion incomoda?",
      "options": [
-       "Decir “no” y buscar ayuda",
+       "Decir \"no\" y buscar ayuda",
        "Callar",
        "Huir sin contarlo"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué es la presión de grupo?",
+     "question": "Que es la presion de grupo?",
      "options": [
        "Influencia de otros para hacer algo",
-       "Una actividad física",
-       "Una emoción"
+       "Una actividad fisica",
+       "Una emocion"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué actitud es positiva frente a la presión de grupo?",
+     "question": "Que actitud es positiva frente a la presion de grupo?",
      "options": [
-       "Saber decir “no”",
+       "Saber decir \"no\"",
        "Aceptar todo",
        "Callar"
      ],
      "answerIndex": 0
    },
    {
-     "question": "El consumo de alcohol o drogas en jóvenes:",
+     "question": "El consumo de alcohol o drogas en jovenes:",
      "options": [
        "Afecta la salud y el juicio",
        "Mejora el rendimiento",
@@ -531,9 +531,9 @@
      "answerIndex": 0
    },
    {
-     "question": "La prevención de adicciones incluye:",
+     "question": "La prevencion de adicciones incluye:",
      "options": [
-       "Información y apoyo emocional",
+       "Informacion y apoyo emocional",
        "Silencio",
        "Castigos"
      ],
@@ -542,23 +542,23 @@
    {
      "question": "La sexualidad incluye:",
      "options": [
-       "Cuerpo, emociones, vínculos y valores",
+       "Cuerpo, emociones, vinculos y valores",
        "Solo relaciones sexuales",
        "Solo placer"
      ],
      "answerIndex": 0
    },
    {
-     "question": "Tener relaciones sexuales sin protección puede causar:",
+     "question": "Tener relaciones sexuales sin proteccion puede causar:",
      "options": [
        "Embarazo o ITS",
        "Nada",
-       "Sueño"
+       "Somnolencia"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué método previene ITS y embarazos?",
+     "question": "Que metodo previene ITS y embarazos?",
      "options": [
        "Preservativo",
        "Pastillas sin receta",
@@ -567,16 +567,16 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué es una ITS?",
+     "question": "Que es una ITS?",
      "options": [
-       "Infección de transmisión sexual",
-       "Infección del estómago",
+       "Infeccion de transmision sexual",
+       "Infeccion del estomago",
        "Gripe"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué hacer ante dudas sobre sexualidad?",
+     "question": "Que hacer ante dudas sobre sexualidad?",
      "options": [
        "Consultar fuentes confiables o adultos de confianza",
        "Buscar en redes sin filtro",
@@ -585,43 +585,43 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué es la responsabilidad afectiva?",
+     "question": "Que es la responsabilidad afectiva?",
      "options": [
-       "Cuidar cómo afectan nuestras acciones a otros",
+       "Cuidar como afectan nuestras acciones a otros",
        "Ignorar sentimientos",
        "Culpar al otro"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué se necesita en una relación sexual consentida?",
+     "question": "Que se necesita en una relacion sexual consentida?",
      "options": [
        "Consentimiento libre y mutuo",
-       "Presión",
+       "Presion",
        "Alcohol"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué significa decir “no es no”?",
+     "question": "Que significa decir \"no es no\"?",
      "options": [
        "Que no hay consentimiento",
-       "Que sí",
+       "Que si",
        "Que depende"
      ],
      "answerIndex": 0
    },
    {
-     "question": "La información sobre sexualidad debe ser:",
+     "question": "La informacion sobre sexualidad debe ser:",
      "options": [
-       "Científica y respetuosa",
+       "Cientifica y respetuosa",
        "Secreta",
-       "Mítica"
+       "Mitica"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué implica la paternidad responsable?",
+     "question": "Que implica la paternidad responsable?",
      "options": [
        "Asumir cuidados y decisiones compartidas",
        "Ignorar al hijo",
@@ -630,19 +630,19 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué es el bullying?",
+     "question": "Que es el bullying?",
      "options": [
-       "Maltrato físico o psicológico reiterado",
+       "Maltrato fisico o psicologico reiterado",
        "Un juego",
        "Un deporte"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Qué hacer ante el bullying?",
+     "question": "Que hacer ante el bullying?",
      "options": [
-       "Avisar a adultos y acompañar a la víctima",
-       "Reírse",
+       "Avisar a adultos y apoyar a la victima",
+       "Reirse",
        "Filmarlo"
      ],
      "answerIndex": 0
@@ -657,7 +657,7 @@
      "answerIndex": 0
    },
    {
-     "question": "¿Qué actitud demuestra respeto en clase?",
+     "question": "Que actitud demuestra respeto en clase?",
      "options": [
        "Escuchar y participar sin agredir",
        "Gritar",
@@ -669,7 +669,7 @@
      "question": "La amistad se basa en:",
      "options": [
        "Confianza y sinceridad",
-       "Interés",
+       "Interes",
        "Mentiras"
      ],
      "answerIndex": 0
@@ -677,8 +677,8 @@
    {
      "question": "Compartir ideas diferentes requiere:",
      "options": [
-       "Escucha y diálogo",
-       "Discusión",
+       "Escucha y dialogo",
+       "Discusion",
        "Desprecio"
      ],
      "answerIndex": 0
@@ -686,7 +686,7 @@
    {
      "question": "La igualdad se construye con:",
      "options": [
-       "Respeto y empatía",
+       "Respeto y empatia",
        "Silencio",
        "Rechazo"
      ],
@@ -702,16 +702,16 @@
      "answerIndex": 0
    },
    {
-     "question": "La violencia de género es:",
+     "question": "La violencia de genero es:",
      "options": [
-       "Agresión basada en el sexo o género",
-       "Una discusión",
+       "Agresion basada en el sexo o genero",
+       "Una discusion",
        "Algo normal"
      ],
      "answerIndex": 0
    },
    {
-     "question": "¿Por qué la ESI es importante?",
+     "question": "Por que la ESI es importante?",
      "options": [
        "Porque forma personas libres, respetuosas e informadas",
        "Porque reemplaza a las familias",

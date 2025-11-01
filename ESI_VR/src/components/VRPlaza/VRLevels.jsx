@@ -333,7 +333,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
 
         {/* Mensaje de motivación */}
         <a-text 
-          value="¡No te rindas! Inténtalo de nuevo" 
+          value="¡No te rindas! Intentalo de nuevo" 
           position="0 -0.45 0" 
           color="#FF9800" 
           align="center" 

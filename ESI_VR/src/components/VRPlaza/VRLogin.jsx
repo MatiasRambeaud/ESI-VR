@@ -28,8 +28,8 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
       try {
         await signOut(auth);
       } catch (error) {
-        console.error('Error al cerrar sesión:', error);
-        setError('Error al cerrar sesión');
+        console.error('Error al cerrar sesion:', error);
+        setError('Error al cerrar sesion');
       }
     };
 
@@ -208,7 +208,7 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
           events="mouseenter: scale: 1.05 1.05 1.05; mouseleave: scale: 1 1 1"
         >
           <a-text
-            value="Cerrar Sesión"
+            value="Cerrar Sesion"
             position="0 0 0.026"
             color="#fff"
             align="center"
@@ -244,7 +244,7 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
 
       {/* Título */}
       <a-text
-        value="Iniciar Sesión"
+        value="Iniciar Sesion"
         position="0 0.6 0"
         color="#333"
         align="center"

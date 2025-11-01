@@ -133,7 +133,7 @@ function VRSelectLevel({ onBack, onSelectNivel }) {
         class="clickable"
       >
         <a-text value="NIVEL INICIAL" position="0 0 0.026" color="#fff" align="center" width="1.3" font-size="32"></a-text>
-        <a-text value="Edad: 3-5 años" position="0 -0.05 0.026" color="#fff" align="center" width="1.3" font-size="20"></a-text>
+        <a-text value="Edad: 3-5" position="0 -0.05 0.026" color="#fff" align="center" width="1.3" font-size="20"></a-text>
       </a-box>
 
       {/* Botón Nivel Primario */}
@@ -147,7 +147,7 @@ function VRSelectLevel({ onBack, onSelectNivel }) {
         class="clickable"
       >
         <a-text value="NIVEL PRIMARIO" position="0 0 0.026" color="#fff" align="center" width="1.3" font-size="32"></a-text>
-        <a-text value="Edad: 6-12 años" position="0 -0.05 0.026" color="#fff" align="center" width="1.3" font-size="20"></a-text>
+        <a-text value="Edad: 6-12" position="0 -0.05 0.026" color="#fff" align="center" width="1.3" font-size="20"></a-text>
       </a-box>
 
       {/* Botón Nivel Secundario */}
@@ -161,7 +161,7 @@ function VRSelectLevel({ onBack, onSelectNivel }) {
         class="clickable"
       >
         <a-text value="NIVEL SECUNDARIO" position="0 0 0.026" color="#fff" align="center" width="1.3" font-size="32"></a-text>
-        <a-text value="Edad: 13+ años" position="0 -0.05 0.026" color="#fff" align="center" width="1.3" font-size="20"></a-text>
+        <a-text value="Edad: 13+" position="0 -0.05 0.026" color="#fff" align="center" width="1.3" font-size="20"></a-text>
       </a-box>
 
       {/* Botón Volver */}

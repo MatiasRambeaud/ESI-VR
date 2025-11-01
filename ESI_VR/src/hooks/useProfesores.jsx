@@ -27,7 +27,7 @@ function Profesores() {
           experiencia: 12
         });
 
-        console.log("Profesores agregados con éxito");
+        console.log("Profesores agregados con exito");
       } catch (error) {
         console.error("Error, no se pudieron agregar los profesores.", error);
       }
@@ -38,7 +38,7 @@ function Profesores() {
 
   return (
     <div>
-      <h1>Colección Profesores</h1>
+      <h1>Coleccion Profesores</h1>
       <p>Se cargaron 3 documentos en Firestore.</p>
     </div>
   );
