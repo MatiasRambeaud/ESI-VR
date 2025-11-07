@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import 'aframe';
 
 // Componente A-Frame para limitar la posición dentro de un rectángulo (barreras)
@@ -38,11 +38,96 @@ if (typeof window !== 'undefined' && window.AFRAME && !window.AFRAME.components[
   });
 }
 
+// Componente para evitar atravesar elementos marcados como .solid (colisión 2D simple)
+if (typeof window !== 'undefined' && window.AFRAME && !window.AFRAME.components['no-pass-solids']) {
+  window.AFRAME.registerComponent('no-pass-solids', {
+    schema: {
+      radius: { type: 'number', default: 0.35 }
+    },
+    init: function () {
+      this.prev = this.el.object3D.position.clone();
+      this.solids = Array.from(this.el.sceneEl.querySelectorAll('.solid'));
+    },
+    isColliding: function (px, pz) {
+      const r = this.data.radius;
+      for (const el of this.solids) {
+        const obj = el.object3D;
+        if (!obj) continue;
+        const pos = obj.position;
+        const geo = el.getAttribute('geometry') || {};
+        // Considerar escala del objeto
+        const sx = obj.scale && obj.scale.x ? obj.scale.x : 1;
+        const sz = obj.scale && obj.scale.z ? obj.scale.z : 1;
+        const rawW = (typeof geo.width === 'number' ? geo.width : parseFloat(geo.width)) || 0.5;
+        const rawD = (typeof geo.depth === 'number' ? geo.depth : parseFloat(geo.depth)) || 0.5;
+        const w = rawW * sx;
+        const d = rawD * sz;
+        const halfW = w / 2 + r;
+        const halfD = d / 2 + r;
+        if (Math.abs(px - pos.x) <= halfW && Math.abs(pz - pos.z) <= halfD) {
+          return true;
+        }
+      }
+      return false;
+    },
+    tick: function () {
+      const p = this.el.object3D.position;
+      const prev = this.prev;
+      const nextX = p.x;
+      const nextZ = p.z;
+
+      // Resolver en ejes separados (sliding): primero X, luego Z
+      // Probar mover solo en X, manteniendo Z previo
+      if (this.isColliding(nextX, prev.z)) {
+        // Intento intermedio para evitar saltos a través de objetos delgados
+        const midX = (prev.x + nextX) * 0.5;
+        if (!this.isColliding(midX, prev.z)) {
+          p.x = midX;
+        } else {
+          // Bloquear X y mantener el anterior + un pequeño empuje fuera (epsilon)
+          p.x = prev.x;
+          const eps = 0.001;
+          // pequeño ajuste lateral según dirección
+          if (nextX > prev.x) p.x -= eps; else if (nextX < prev.x) p.x += eps;
+        }
+      }
+
+      // Probar mover solo en Z, con X ya resuelto
+      if (this.isColliding(p.x, nextZ)) {
+        const midZ = (prev.z + nextZ) * 0.5;
+        if (!this.isColliding(p.x, midZ)) {
+          p.z = midZ;
+        } else {
+          p.z = prev.z;
+          const eps = 0.001;
+          if (nextZ > prev.z) p.z -= eps; else if (nextZ < prev.z) p.z += eps;
+        }
+      }
+
+      // Actualizar última posición válida
+      this.prev.copy(p);
+    }
+  });
+}
+
 export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCameraPosition = '0 1.6 -8.2', movementLocked = false }) => {
   const sceneRef = useRef(null);
   const screenRef = useRef(null);
   const cameraRef = useRef(null);
   const posterImageRef = useRef(null);
+
+  const puestos = useMemo(() => {
+    const columnas = [-4, -2, 0, 2, 4];
+    const filasZ = [3, 1, -1, -3, -5];
+    const arr = [];
+    let i = 0;
+    for (const z of filasZ) {
+      for (const x of columnas) {
+        arr.push({ x, z, key: i++ });
+      }
+    }
+    return arr;
+  }, []);
 
   useEffect(() => {
     // Inicialización de la escena VR
@@ -225,54 +310,44 @@ export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCam
 
 
         {/* Bancos con sillas (aula) */}
-        {(() => {
-          // Más columnas y filas, manteniendo pasillos razonables
-          const columnas = [-4, -2, 0, 2, 4];
-          const filasZ = [3, 1, -1, -3, -5];
-          const puestos = [];
-          let i = 0;
-          for (const z of filasZ) {
-            for (const x of columnas) {
-              puestos.push({ x, z, key: i++ });
-            }
-          }
-          return puestos.map(({ x, z, key }) => (
-            <a-entity key={key}>
-              {/* Mesa */}
-              <a-box position={`${x} 0.75 ${z}`} width="0.9" height="0.05" depth="0.6" color="#6D4C41"></a-box>
-              {/* Patas de la mesa */}
-              <a-box position={`${x - 0.42} 0.375 ${z - 0.27}`} width="0.05" height="0.75" depth="0.05" color="#6D4C41"></a-box>
-              <a-box position={`${x + 0.42} 0.375 ${z - 0.27}`} width="0.05" height="0.75" depth="0.05" color="#795548"></a-box>
-              <a-box position={`${x - 0.42} 0.375 ${z + 0.27}`} width="0.05" height="0.75" depth="0.05" color="#795548"></a-box>
-              <a-box position={`${x + 0.42} 0.375 ${z + 0.27}`} width="0.05" height="0.75" depth="0.05" color="#795548"></a-box>
+        {puestos.map(({ x, z, key }) => (
+          <a-entity key={key}>
+            {/* Mesa */}
+            <a-box position={`${x} 0.75 ${z}`} width="0.9" height="0.05" depth="0.6" color="#6D4C41" class="solid"></a-box>
+            {/* Patas de la mesa */}
+            <a-box position={`${x - 0.42} 0.375 ${z - 0.27}`} width="0.05" height="0.75" depth="0.05" color="#6D4C41" class="solid"></a-box>
+            <a-box position={`${x + 0.42} 0.375 ${z - 0.27}`} width="0.05" height="0.75" depth="0.05" color="#795548" class="solid"></a-box>
+            <a-box position={`${x - 0.42} 0.375 ${z + 0.27}`} width="0.05" height="0.75" depth="0.05" color="#795548" class="solid"></a-box>
+            <a-box position={`${x + 0.42} 0.375 ${z + 0.27}`} width="0.05" height="0.75" depth="0.05" color="#795548" class="solid"></a-box>
 
-              {/* Silla detrás de la mesa, apuntando hacia adelante (al pizarrón) */}
-              <a-box position={`${x} 0.45 ${z + 0.5}`} width="0.45" height="0.05" depth="0.45" color="#607D8B"></a-box>
-              {/* Patas de la silla */}
-              <a-box position={`${x - 0.2} 0.225 ${z + 0.28}`} width="0.05" height="0.45" depth="0.05" color="#455A64"></a-box>
-              <a-box position={`${x + 0.2} 0.225 ${z + 0.28}`} width="0.05" height="0.45" depth="0.05" color="#455A64"></a-box>
-              <a-box position={`${x - 0.2} 0.225 ${z + 0.72}`} width="0.05" height="0.45" depth="0.05" color="#455A64"></a-box>
-              <a-box position={`${x + 0.2} 0.225 ${z + 0.72}`} width="0.05" height="0.45" depth="0.05" color="#455A64"></a-box>
-              {/* Respaldo de la silla (detrás del alumno) */}
-              <a-box position={`${x} 0.7 ${z + 0.72}`} width="0.45" height="0.4" depth="0.05" color="#607D8B"></a-box>
-            </a-entity>
-          ));
-        })()}
+            {/* Silla detrás de la mesa, apuntando hacia adelante (al pizarrón) */}
+            <a-box position={`${x} 0.45 ${z + 0.5}`} width="0.45" height="0.05" depth="0.45" color="#607D8B" class="solid"></a-box>
+            {/* Patas de la silla */}
+            <a-box position={`${x - 0.2} 0.225 ${z + 0.28}`} width="0.05" height="0.45" depth="0.05" color="#455A64" class="solid"></a-box>
+            <a-box position={`${x + 0.2} 0.225 ${z + 0.28}`} width="0.05" height="0.45" depth="0.05" color="#455A64" class="solid"></a-box>
+            <a-box position={`${x - 0.2} 0.225 ${z + 0.72}`} width="0.05" height="0.45" depth="0.05" color="#455A64" class="solid"></a-box>
+            <a-box position={`${x + 0.2} 0.225 ${z + 0.72}`} width="0.05" height="0.45" depth="0.05" color="#455A64" class="solid"></a-box>
+            {/* Respaldo de la silla (detrás del alumno) */}
+            <a-box position={`${x} 0.7 ${z + 0.72}`} width="0.45" height="0.4" depth="0.05" color="#607D8B" class="solid"></a-box>
+          </a-entity>
+        ))}
 
 
-        {/* Cámara */}
-        <a-entity 
-          ref={cameraRef}
-          id="camera"
-          camera 
-          look-controls 
-          position={initialCameraPosition}
-          wasd-controls="fly: false"
-          boundary="minX: -9.2; maxX: 9.2; minZ: -9.75; maxZ: 9.2"
-        ></a-entity>
-      </a-scene>
-    </div>
-  );
+      {/* Cámara */}
+      <a-entity 
+        ref={cameraRef}
+        id="camera"
+        camera 
+        look-controls 
+        position={initialCameraPosition}
+        wasd-controls="fly: false"
+        boundary="minX: -9.2; maxX: 9.2; minZ: -9.75; maxZ: 9.2"
+        no-pass-solids="radius: 0.2"
+      ></a-entity>
+    </a-scene>
+  </div>
+);
+
 };
 
 // Estilos para los botones
@@ -287,4 +362,4 @@ const buttonStyle = {
   zIndex: '1000',
 };
 
-export default VRPlaza;
+export default VRPlaza
