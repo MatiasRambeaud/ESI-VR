@@ -109,9 +109,9 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
         {/* Fondo del formulario */}
         <a-plane
           color="#f0f0f0"
-          width="1.8"
-          height="1.5"
-          position="0 0 -0.01"
+          width="2.2"
+          height="2.0"
+          position="0 -0.15 -0.01"
           opacity="0.8"
         ></a-plane>
 
