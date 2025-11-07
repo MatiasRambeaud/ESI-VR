@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/ESI-VR/static/js/main.1936433a.js",
+    "main.js": "/ESI-VR/static/js/main.f7f932e7.js",
     "index.html": "/ESI-VR/index.html",
-    "main.1936433a.js.map": "/ESI-VR/static/js/main.1936433a.js.map"
+    "main.f7f932e7.js.map": "/ESI-VR/static/js/main.f7f932e7.js.map"
   },
   "entrypoints": [
-    "static/js/main.1936433a.js"
+    "static/js/main.f7f932e7.js"
   ]
 }
