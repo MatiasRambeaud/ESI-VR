@@ -199,38 +199,6 @@ export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCam
 
   return (
     <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
-      {/* Botones de interfaz */}
-      <div style={{
-        position: 'absolute',
-        top: '10px',
-        left: '10px',
-        zIndex: 1000,
-        display: 'flex',
-        gap: '10px'
-      }}>
-        <button 
-          onClick={onSelectLevel}
-          style={buttonStyle}
-        >
-          ⬅ Seleccionar nivel
-        </button>
-        <button 
-          onClick={onProfile}
-          style={buttonStyle}
-        >
-          ⬅ Perfil
-        </button>
-        <button 
-          onClick={() => {
-            resetCamera();
-            if (onBack) onBack();
-          }}
-          style={buttonStyle}
-        >
-          ⬅ Volver
-        </button>
-      </div>
-
       {/* Escena A-Frame */}
       <a-scene ref={sceneRef}>
         {/* Cielo */}
@@ -348,18 +316,6 @@ export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCam
   </div>
 );
 
-};
-
-// Estilos para los botones
-const buttonStyle = {
-  padding: '10px 14px',
-  fontSize: '14px',
-  borderRadius: '8px',
-  border: 'none',
-  cursor: 'pointer',
-  backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  color: '#fff',
-  zIndex: '1000',
 };
 
 export default VRPlaza
