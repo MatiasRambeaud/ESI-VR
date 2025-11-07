@@ -313,15 +313,15 @@ export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCam
           wasd-controls="fly: false"
         >
           <a-entity
-            cursor="fuse: true; fuseTimeout: 2000"
+            cursor="fuse: true; fuseTimeout: 1500"
             position="0 0 -1"
             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.04"
             material="color: white; shader: flat"
             raycaster="objects: .clickable"
             animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.5 0.5 0.5; to: 1 1 1"
-            animation__fusing="property: scale; startEvents: fusing; easing: linear; dur: 2000; from: 1 1 1; to: 0.2 0.2 0.2"
+            animation__fusing="property: scale; startEvents: fusing; easing: linear; dur: 1500; from: 1 1 1; to: 0.2 0.2 0.2"
             animation__mouseleave="property: scale; startEvents: mouseleave; dur: 300; to: 1 1 1"
-            animation__fusingcolor="property: material.color; startEvents: fusing; from: #FFFFFF; to: #FF6B6B; dur: 2000; easing: linear"
+            animation__fusingcolor="property: material.color; startEvents: fusing; from: #FFFFFF; to: #FF6B6B; dur: 1500; easing: linear"
           >
             <a-ring
               id="progress-ring"
@@ -332,7 +332,7 @@ export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCam
               color="#4CC3D9"
               opacity="0.8"
               rotation="0 0 0"
-              animation__fusing="property: geometry.thetaLength; startEvents: fusing; from: 360; to: 0; dur: 2000; easing: linear"
+              animation__fusing="property: geometry.thetaLength; startEvents: fusing; from: 360; to: 0; dur: 1500; easing: linear"
               animation__mouseleave="property: geometry.thetaLength; startEvents: mouseleave; to: 360; dur: 300"
             ></a-ring>
             <a-animation
