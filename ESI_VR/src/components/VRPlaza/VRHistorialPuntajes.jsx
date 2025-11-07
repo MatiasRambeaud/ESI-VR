@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { SafeText } from '../common/SafeText';
 import { VRPlaza } from './VRPlaza';
 import { usePuntajes } from '../../hooks/usePuntajes';
 
@@ -30,60 +31,60 @@ const VRHistorialPuntajes = ({ onBack }) => {
 
       {/* Título */}
       <a-plane color="#2196F3" width="1.6" height="0.4" position="0 0.55 0"></a-plane>
-      <a-text value="Historial de Puntajes" position="0 0.55 0.01" color="#fff" align="center" width="1.5"></a-text>
+      <SafeText value="Historial de Puntajes" position="0 0.55 0.01" color="#fff" align="center" width="1.5"></SafeText>
 
       {/* Estadísticas */}
-      <a-text 
+      <SafeText 
         value={`Total de Quizzes: ${estadisticas.totalQuizzes}`} 
         position="0 0.2 0" 
         color="#333" 
         align="center" 
         width="1.6"
-      ></a-text>
+      ></SafeText>
 
-      <a-text 
+      <SafeText 
         value={`Mejor Puntaje: ${estadisticas.mejorPuntaje}/5`} 
         position="0 0.05 0" 
         color="#333" 
         align="center" 
         width="1.6"
-      ></a-text>
+      ></SafeText>
 
-      <a-text 
+      <SafeText 
         value={`Promedio: ${estadisticas.promedioPuntaje}/5`} 
         position="0 -0.1 0" 
         color="#333" 
         align="center" 
         width="1.6"
-      ></a-text>
+      ></SafeText>
 
-      <a-text 
+      <SafeText 
         value={`Último Puntaje: ${estadisticas.puntajeMasReciente}/5`} 
         position="0 -0.25 0" 
         color="#333" 
         align="center" 
         width="1.6"
-      ></a-text>
+      ></SafeText>
 
       {/* Estado de carga o error */}
       {isLoading && (
-        <a-text 
+        <SafeText 
           value="Cargando historial..." 
           position="0 -0.4 0" 
           color="#FF9800" 
           align="center" 
           width="1.6"
-        ></a-text>
+        ></SafeText>
       )}
 
       {error && (
-        <a-text 
+        <SafeText 
           value={`Error: ${error}`} 
           position="0 -0.4 0" 
           color="#F44336" 
           align="center" 
           width="1.6"
-        ></a-text>
+        ></SafeText>
       )}
 
       {/* Botón de volver */}
@@ -96,7 +97,7 @@ const VRHistorialPuntajes = ({ onBack }) => {
         color="#2196F3" 
         class="clickable"
       >
-        <a-text value="Volver" position="0 0 0.026" color="#fff" align="center" width="1.0"></a-text>
+        <SafeText value="Volver" position="0 0 0.026" color="#fff" align="center" width="1.0"></SafeText>
       </a-box>
     </a-entity>
   );

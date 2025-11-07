@@ -13,11 +13,11 @@ const CompletionScreen = ({ onRestart, onShowExplanation }) => {
 
                 {/* Personaje simple hecho en HTML y CSS */}
                 <div className="character">
-                  <img src="ESI_VR\public\img\nivelganado.png" alt="Chica logro" className="nina-img" />
+                  <img src="ESI_VR\public\img\nivelganado.png" alt="Niña logro" className="nina-img" />
                 </div>
 
                 <button className="explanationButton" onClick={onShowExplanation}>
-                    Explicacion
+                    Explicación
                 </button>
             </div>
 

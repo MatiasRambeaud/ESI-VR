@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SafeText } from './components/common/SafeText';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import VRLogin from './components/VRPlaza/VRLogin';
 import VRLevels from './components/VRPlaza/VRLevels';
@@ -120,7 +121,7 @@ function VRSelectLevel({ onBack, onSelectNivel }) {
 
       {/* Título */}
       <a-plane color="#2196F3" width="1.8" height="0.4" position="0 0.9 0"></a-plane>
-      <a-text value="Selecciona un Nivel Educativo" position="0 0.9 0.01" color="#fff" align="center" width="1.7" font-size="40"></a-text>
+      <SafeText value="Selecciona un Nivel Educativo" position="0 0.9 0.01" color="#fff" align="center" width="1.7" font-size="40"></SafeText>
 
       {/* Botón Nivel Inicial */}
       <a-box 
@@ -132,8 +133,8 @@ function VRSelectLevel({ onBack, onSelectNivel }) {
         color="#4CAF50" 
         class="clickable"
       >
-        <a-text value="NIVEL INICIAL" position="0 0 0.026" color="#fff" align="center" width="1.3" font-size="32"></a-text>
-        <a-text value="Edad: 3-5" position="0 -0.05 0.026" color="#fff" align="center" width="1.3" font-size="20"></a-text>
+        <SafeText value="NIVEL INICIAL" position="0 0 0.026" color="#fff" align="center" width="1.3" font-size="32"></SafeText>
+        <SafeText value="Edad: 3-5 años" position="0 -0.05 0.026" color="#fff" align="center" width="1.3" font-size="20"></SafeText>
       </a-box>
 
       {/* Botón Nivel Primario */}
@@ -146,8 +147,8 @@ function VRSelectLevel({ onBack, onSelectNivel }) {
         color="#FF9800" 
         class="clickable"
       >
-        <a-text value="NIVEL PRIMARIO" position="0 0 0.026" color="#fff" align="center" width="1.3" font-size="32"></a-text>
-        <a-text value="Edad: 6-12" position="0 -0.05 0.026" color="#fff" align="center" width="1.3" font-size="20"></a-text>
+        <SafeText value="NIVEL PRIMARIO" position="0 0 0.026" color="#fff" align="center" width="1.3" font-size="32"></SafeText>
+        <SafeText value="Edad: 6-12 años" position="0 -0.05 0.026" color="#fff" align="center" width="1.3" font-size="20"></SafeText>
       </a-box>
 
       {/* Botón Nivel Secundario */}
@@ -160,8 +161,8 @@ function VRSelectLevel({ onBack, onSelectNivel }) {
         color="#9C27B0" 
         class="clickable"
       >
-        <a-text value="NIVEL SECUNDARIO" position="0 0 0.026" color="#fff" align="center" width="1.3" font-size="32"></a-text>
-        <a-text value="Edad: 13+" position="0 -0.05 0.026" color="#fff" align="center" width="1.3" font-size="20"></a-text>
+        <SafeText value="NIVEL SECUNDARIO" position="0 0 0.026" color="#fff" align="center" width="1.3" font-size="32"></SafeText>
+        <SafeText value="Edad: 13+ años" position="0 -0.05 0.026" color="#fff" align="center" width="1.3" font-size="20"></SafeText>
       </a-box>
 
       {/* Botón Volver */}
@@ -174,7 +175,7 @@ function VRSelectLevel({ onBack, onSelectNivel }) {
         color="#9E9E9E" 
         class="clickable"
       >
-        <a-text value="← Volver" position="0 0 0.026" color="#fff" align="center" width="1.0"></a-text>
+        <SafeText value="← Volver" position="0 0 0.026" color="#fff" align="center" width="1.0"></SafeText>
       </a-box>
     </a-entity>
   );

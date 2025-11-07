@@ -22,14 +22,14 @@ function Login() {
     if (user) {
       window.location.href = '/escena.html';
     } else {
-      setError('Usuario o clave incorrectos');
+      setError('Usuario o contraseña incorrectos');
     }
   };
 
   return (
     <div className="form-container">
       <div className="form-box">
-        <h2 className="form-title">Iniciar Sesion</h2>
+        <h2 className="form-title">Iniciar Sesión</h2>
         <form onSubmit={handleSubmit}>
           <input
             className="form-input"
@@ -42,7 +42,7 @@ function Login() {
           <input
             className="form-input"
             type="password"
-            placeholder="Clave"
+            placeholder="Contraseña"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

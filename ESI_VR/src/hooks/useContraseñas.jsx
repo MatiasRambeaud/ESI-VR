@@ -21,9 +21,9 @@ function Contraseñas() {
           contraseña: 12348765
         });
 
-        console.log("Claves agregadas con exito");
+        console.log("Contraseñas agregadas con éxito");
       } catch (error) {
-        console.error("Error, no se pudieron agregar las claves.", error);
+        console.error("Error, no se pudieron agregar las contraseñas.", error);
       }
     };
 
@@ -32,7 +32,7 @@ function Contraseñas() {
 
   return (
     <div>
-      <h1>Coleccion Claves</h1>
+      <h1>Colección Contraseñas</h1>
       <p>Se cargaron 3 documentos en Firestore.</p>
     </div>
   );

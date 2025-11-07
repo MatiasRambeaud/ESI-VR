@@ -33,7 +33,7 @@ const SeleccionNivel = () => {
           <button className="nube-btn" onClick={seleccionNivel3}>Secundario</button>
         </div>
 
-        <img src="/niño-pensando.png" alt="Chico pensando" className="niño" />
+        <img src="/niño-pensando.png" alt="Niño pensando" className="niño" />
       </div>
 
         <div className="footer">

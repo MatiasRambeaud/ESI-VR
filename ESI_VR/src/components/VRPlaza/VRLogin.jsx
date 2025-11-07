@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { SafeText } from '../common/SafeText';
 import { VRPlaza } from './VRPlaza';
 import { signInWithPopup, signOut } from 'firebase/auth';
 import { auth, googleProvider } from '../../firebase/firebase';
@@ -28,8 +29,8 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
       try {
         await signOut(auth);
       } catch (error) {
-        console.error('Error al cerrar sesion:', error);
-        setError('Error al cerrar sesion');
+        console.error('Error al cerrar sesión:', error);
+        setError('Error al cerrar sesión');
       }
     };
 
@@ -115,22 +116,22 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
         ></a-plane>
 
         {/* Título */}
-        <a-text
+        <SafeText
           value="¡Bienvenido!"
           position="0 0.6 0"
           color="#333"
           align="center"
           width="1.8"
-        ></a-text>
+        ></SafeText>
 
         {/* Información del usuario */}
-        <a-text
+        <SafeText
           value={`Usuario: ${user.email || user.displayName || 'Usuario'}`}
           position="0 0.2 0"
           color="#333"
           align="center"
           width="1.6"
-        ></a-text>
+        ></SafeText>
 
         {/* Botón para comenzar el quiz */}
         <a-box
@@ -144,13 +145,13 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
           class="clickable"
           events="mouseenter: scale: 1.05 1.05 1.05; mouseleave: scale: 1 1 1"
         >
-          <a-text
+          <SafeText
             value="Comenzar Quiz"
             position="0 0 0.026"
             color="#fff"
             align="center"
             width="1.0"
-          ></a-text>
+          ></SafeText>
         </a-box>
 
         {/* Botón para ver historial */}
@@ -165,13 +166,13 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
           class="clickable"
           events="mouseenter: scale: 1.05 1.05 1.05; mouseleave: scale: 1 1 1"
         >
-          <a-text
+          <SafeText
             value="Ver Historial"
             position="0 0 0.026"
             color="#fff"
             align="center"
             width="0.8"
-          ></a-text>
+          ></SafeText>
         </a-box>
 
         {/* Botón para ver leaderboard */}
@@ -186,13 +187,13 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
           class="clickable"
           events="mouseenter: scale: 1.05 1.05 1.05; mouseleave: scale: 1 1 1"
         >
-          <a-text
+          <SafeText
             value="Leaderboard"
             position="0 0 0.026"
             color="#fff"
             align="center"
             width="0.8"
-          ></a-text>
+          ></SafeText>
         </a-box>
 
         {/* Botón para cerrar sesión */}
@@ -207,13 +208,13 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
           class="clickable"
           events="mouseenter: scale: 1.05 1.05 1.05; mouseleave: scale: 1 1 1"
         >
-          <a-text
-            value="Cerrar Sesion"
+          <SafeText
+            value="Cerrar Sesión"
             position="0 0 0.026"
             color="#fff"
             align="center"
             width="0.8"
-          ></a-text>
+          ></SafeText>
         </a-box>
       </a-entity>
     );
@@ -243,13 +244,13 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
       ></a-plane>
 
       {/* Título */}
-      <a-text
-        value="Iniciar Sesion"
+      <SafeText
+        value="Iniciar Sesión"
         position="0 0.6 0"
         color="#333"
         align="center"
         width="1.8"
-      ></a-text>
+      ></SafeText>
 
       {/* Botón de Google Sign-In */}
       <a-box
@@ -263,25 +264,25 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
         class="clickable"
         events="mouseenter: scale: 1.05 1.05 1.05; mouseleave: scale: 1 1 1"
       >
-        <a-text
+        <SafeText
           value={isLoading ? 'Cargando...' : 'Iniciar con Google'}
           position="0 0 0.026"
           color="#fff"
           align="center"
           width="0.8"
-        ></a-text>
+        ></SafeText>
       </a-box>
 
       {/* Mensaje de error */}
       {error && (
-        <a-text
+        <SafeText
           value={error.length > 50 ? error.substring(0, 50) + '...' : error}
           position="0 -0.45 0"
           color="red"
           align="center"
           width="1.6"
           wrap-count="20"
-        ></a-text>
+        ></SafeText>
       )}
     </a-entity>
   );

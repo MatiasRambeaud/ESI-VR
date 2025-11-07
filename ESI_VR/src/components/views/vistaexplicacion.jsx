@@ -12,9 +12,9 @@ const VistaExplicacion = () => {
         </div>
 
         <div className="personajes">
-          <img src="/nene-triste.png" alt="Chico triste" className="avatar" />
+          <img src="/nene-triste.png" alt="Niño triste" className="avatar" />
           <button className="btn green">Continuar</button>
-          <img src="/nena-triste.png" alt="Chica pensativa" className="avatar" />
+          <img src="/nena-triste.png" alt="Niña pensativa" className="avatar" />
         </div>
       </div>
 

@@ -3,6 +3,7 @@ import { VRPlaza } from './VRPlaza';
 import questionsData from '../../data/questions.json';
 import { useAuth } from '../../context/AuthContext';
 import { usePuntajes } from '../../hooks/usePuntajes';
+import { SafeText } from '../common/SafeText';
 
 const pickRandomIndices = (total, count) => {
   const indices = Array.from({ length: total }, (_, i) => i);
@@ -231,38 +232,38 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
 
         {/* Título de felicitaciones */}
         <a-plane color="#4CAF50" width="1.6" height="0.5" position="0 0.7 0"></a-plane>
-        <a-text value="¡FELICITACIONES!" position="0 0.7 0.01" color="#fff" align="center" width="1.5" font="monoid" font-size="40"></a-text>
+        <SafeText value="¡FELICITACIONES!" position="0 0.7 0.01" color="#fff" align="center" width="1.5" font="monoid" font-size="40"></SafeText>
 
         {/* Estadísticas */}
-        <a-text 
+        <SafeText 
           value={`Preguntas Correctas: ${score} / ${maxRounds}`} 
           position="0 0.3 0" 
           color="#333" 
           align="center" 
           width="1.6"
           font-size="30"
-        ></a-text>
+        ></SafeText>
 
-        <a-text 
+        <SafeText 
           value={`Porcentaje: ${Math.round(scorePercentage)}%`} 
           position="0 0.05 0" 
           color="#2196F3" 
           align="center" 
           width="1.6"
           font-size="28"
-        ></a-text>
+        ></SafeText>
 
-        <a-text 
+        <SafeText 
           value="Has completado el nivel" 
           position="0 -0.2 0" 
           color="#666" 
           align="center" 
           width="1.6"
           font-size="24"
-        ></a-text>
+        ></SafeText>
 
         {/* Estado de guardado */}
-        <a-text 
+        <SafeText 
           value={
             isSaving ? "Guardando puntaje..." : 
             saveError ? `Error: ${saveError}` : 
@@ -277,7 +278,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
           align="center" 
           width="1.6"
           font-size="22"
-        ></a-text>
+        ></SafeText>
 
         {/* Botón para volver */}
         <a-box 
@@ -289,7 +290,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
           color="#2196F3" 
           class="clickable"
         >
-          <a-text value="Volver al Inicio" position="0 0 0.026" color="#fff" align="center" width="1.0"></a-text>
+          <SafeText value="Volver al Inicio" position="0 0 0.026" color="#fff" align="center" width="1.0"></SafeText>
         </a-box>
       </a-entity>
     );
@@ -301,45 +302,45 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
 
         {/* Título de error */}
         <a-plane color="#F44336" width="1.6" height="0.5" position="0 0.7 0"></a-plane>
-        <a-text value="Te equivocaste" position="0 0.7 0.01" color="#fff" align="center" width="1.5" font="monoid" font-size="40"></a-text>
+        <SafeText value="Te equivocaste" position="0 0.7 0.01" color="#fff" align="center" width="1.5" font="monoid" font-size="40"></SafeText>
 
         {/* Estadísticas */}
-        <a-text 
+        <SafeText 
           value={`Respuestas Correctas: ${score} / ${maxRounds}`} 
           position="0 0.3 0" 
           color="#333" 
           align="center" 
           width="1.6"
           font-size="30"
-        ></a-text>
+        ></SafeText>
 
-        <a-text 
+        <SafeText 
           value={`Porcentaje: ${Math.round(scorePercentage)}%`} 
           position="0 0.05 0" 
           color="#F44336" 
           align="center" 
           width="1.6"
           font-size="28"
-        ></a-text>
+        ></SafeText>
 
-        <a-text 
+        <SafeText 
           value="Necesitas al menos 60% para pasar" 
           position="0 -0.2 0" 
           color="#666" 
           align="center" 
           width="1.6"
           font-size="24"
-        ></a-text>
+        ></SafeText>
 
         {/* Mensaje de motivación */}
-        <a-text 
-          value="¡No te rindas! Intentalo de nuevo" 
+        <SafeText 
+          value="¡No te rindas! Inténtalo de nuevo" 
           position="0 -0.45 0" 
           color="#FF9800" 
           align="center" 
           width="1.6"
           font-size="22"
-        ></a-text>
+        ></SafeText>
 
         {/* Botón para volver */}
         <a-box 
@@ -351,7 +352,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
           color="#2196F3" 
           class="clickable"
         >
-          <a-text value="Intentar Nuevamente" position="0 0 0.026" color="#fff" align="center" width="1.0"></a-text>
+          <SafeText value="Intentar Nuevamente" position="0 0 0.026" color="#fff" align="center" width="1.0"></SafeText>
         </a-box>
       </a-entity>
     );
@@ -393,18 +394,18 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
         position="0 0.55 0"
         animation={showFeedback ? `property: color; to: ${isCorrect ? '#4CAF50' : '#F44336'}; dur: 300; easing: easeInOutSine` : ''}
       ></a-plane>
-      <a-text 
+      <SafeText 
         value={currentQuestion ? currentQuestion.question : 'Cargando...'} 
         position="0 0.55 0.01" 
         color="#222" 
         align="center" 
         width="1.5"
         font-size="28"
-      ></a-text>
+      ></SafeText>
 
       {/* Feedback visual */}
       {showFeedback && (
-        <a-text 
+        <SafeText 
           value={isCorrect ? '✓ Correcto!' : '✗ Incorrecto'} 
           position="0 0.15 0.1" 
           color={isCorrect ? '#4CAF50' : '#F44336'} 
@@ -412,7 +413,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
           width="1.6"
           font-size="36"
           animation="property: opacity; from: 0; to: 1; dur: 300; easing: easeOutQuad"
-        ></a-text>
+        ></SafeText>
       )}
 
       {/* Opción 1 */}
@@ -427,7 +428,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
         events="mouseenter: scale: 1.02 1.02 1.02; mouseleave: scale: 1 1 1"
         animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOutSine" : ""}
       >
-        <a-text value={currentQuestion ? currentQuestion.options[0] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></a-text>
+        <SafeText value={currentQuestion ? currentQuestion.options[0] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></SafeText>
       </a-box>
 
       {/* Opción 2 */}
@@ -442,7 +443,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
         events="mouseenter: scale: 1.02 1.02 1.02; mouseleave: scale: 1 1 1"
         animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOutSine" : ""}
       >
-        <a-text value={currentQuestion ? currentQuestion.options[1] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></a-text>
+        <SafeText value={currentQuestion ? currentQuestion.options[1] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></SafeText>
       </a-box>
 
       {/* Opción 3 */}
@@ -457,21 +458,21 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
         events="mouseenter: scale: 1.02 1.02 1.02; mouseleave: scale: 1 1 1"
         animation={isAnswered ? "property: color; to: #e0e0e0; dur: 200; easing: easeInOutSine" : ""}
       >
-        <a-text value={currentQuestion ? currentQuestion.options[2] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></a-text>
+        <SafeText value={currentQuestion ? currentQuestion.options[2] : ''} position="0 0 0.026" color="#000" align="center" width="1.3"></SafeText>
       </a-box>
 
       {/* Contador de preguntas */}
-      <a-text 
+      <SafeText 
         value={`Pregunta ${Math.min(currentQuestionIndex + 1, maxRounds)} / ${maxRounds}`} 
         position="0 -0.8 0" 
         color="#666" 
         align="center" 
         width="1.8"
         font-size="22"
-      ></a-text>
+      ></SafeText>
       
       {/* Puntaje actual */}
-      <a-text 
+      <SafeText 
         value={`Puntaje: ${score}`} 
         position="0 -0.95 0" 
         color="#2196F3" 
@@ -479,7 +480,7 @@ const VRLevels = ({ nivelEducativo, onFinish, onRestart, onBack }) => {
         width="1.8"
         font-size="24"
         font-weight="bold"
-      ></a-text>
+      ></SafeText>
     </a-entity>
   );
 

@@ -7,11 +7,11 @@ export default function Login() {
   const [mensaje, setMensaje] = useState('');
 
   const handleGoogle = () => {
-    setMensaje('Simulando inicio de sesion con Google...');
+    setMensaje('Simulando inicio de sesión con Google...');
   };
 
   const handleLogin = () => {
-    setMensaje('Simulando inicio de sesion...');
+    setMensaje('Simulando inicio de sesión...');
   };
 
   return (
@@ -22,17 +22,17 @@ export default function Login() {
           <span className="red">S</span>
           <span className="orange">I</span>
         </h1>
-        <h2>iniciar sesion</h2>
+        <h2>iniciar sesión</h2>
 
         <button className="google-button" onClick={handleGoogle}>
           Inicia con Google <span className="google-logo">G</span>
         </button>
 
         <button className="login-button" onClick={handleLogin}>
-          iniciar sesion
+          iniciar sesión
         </button>
 
-        <img src="ESI_VR\public\img\niñainicio.png" alt="Chica saludando" className="nina-img" />
+        <img src="ESI_VR\public\img\niñainicio.png" alt="Niña saludando" className="nina-img" />
 
         <p className="mensaje">{mensaje}</p>
       </div>
