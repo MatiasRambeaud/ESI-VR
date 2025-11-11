@@ -280,7 +280,7 @@ export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCam
 
 
         {/* Bancos con sillas (aula) */}
-        {puestos.map(({ x, z, key }) => (
+        {puestos.map(({ x, z, key }, index) => (
           <a-entity key={key}>
             {/* Mesa */}
             <a-box position={`${x} 0.75 ${z}`} width="0.9" height="0.05" depth="0.6" color="#6D4C41" class="solid"></a-box>
@@ -299,6 +299,83 @@ export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCam
             <a-box position={`${x + 0.2} 0.225 ${z + 0.72}`} width="0.05" height="0.45" depth="0.05" color="#455A64" class="solid"></a-box>
             {/* Respaldo de la silla (detrás del alumno) */}
             <a-box position={`${x} 0.7 ${z + 0.72}`} width="0.45" height="0.4" depth="0.05" color="#607D8B" class="solid"></a-box>
+            
+            {/* Persona sentada (en las dos últimas filas - 10 asientos) */}
+            {index >= puestos.length - 10 && (
+              <a-entity position={`${x} 0.6 ${z + 0.6}`} rotation="0 180 0" scale="1.25 1.25 1.25">
+                {/* Cabeza */}
+                <a-box 
+                  position="0 0.4 0" 
+                  width="0.24" 
+                  height="0.24" 
+                  depth="0.2"
+                  color="#FFE0B2"
+                >
+                  {/* Espacio para la cara (puedes reemplazar la URL con la imagen de perfil) */}
+                  <a-plane 
+                    position="0 0 0.11" 
+                    width="0.22" 
+                    height="0.22" 
+                    color="#FFFFFF"
+                    src="https://via.placeholder.com/100"
+                    shader="flat"
+                  ></a-plane>
+                </a-box>
+                
+                {/* Cuerpo */}
+                <a-cylinder 
+                  position="0 0.15 0" 
+                  radius="0.09" 
+                  height="0.5" 
+                  color={index % 2 === 0 ? "#2196F3" : "#F44336"}
+                ></a-cylinder>
+                
+                {/* Brazos apoyados en el banco */}
+                <a-box 
+                  position="0.13 0.18 0.17" 
+                  width="0.4" 
+                  height="0.05" 
+                  depth="0.05" 
+                  color="#FFE0B2" 
+                  rotation="0 -90 0"
+                ></a-box>
+                <a-box 
+                  position="-0.13 0.18 0.17" 
+                  width="0.4" 
+                  height="0.05" 
+                  depth="0.05" 
+                  color="#FFE0B2" 
+                  rotation="0 90 0"
+                ></a-box>
+                
+                {/* Piernas con rodillas (sentado) */}
+                {/* Pierna derecha */}
+                <a-entity position="0.08 0.08 -0.05">
+                  {/* Muslo derecho */}
+                  <a-entity position="0 -0.1 0.1" rotation="-90 0 0">
+                    <a-box position="0 -0.15 0" width="0.06" height="0.3" depth="0.1" color={index % 2 === 0 ? "#1565C0" : "#D32F2F"}>
+                      {/* Rodilla derecha */}
+                      <a-sphere position="0 -0.2 0" radius="0.05" color={index % 2 === 0 ? "#1565C0" : "#D32F2F"}></a-sphere>
+                    </a-box>
+                    {/* Pantorrilla derecha */}
+                    <a-box position="0 -0.3 -0.18" width="0.06" height="0.3" depth="0.08" color={index % 2 === 0 ? "#0D47A1" : "#B71C1C"} rotation="90 0 0"></a-box>
+                  </a-entity>
+                </a-entity>
+                
+                {/* Pierna izquierda */}
+                <a-entity position="-0.08 0.08 -0.05">
+                  {/* Muslo izquierdo */}
+                  <a-entity position="0 -0.1 0.1" rotation="-90 0 0">
+                    <a-box position="0 -0.15 0" width="0.06" height="0.3" depth="0.1" color={index % 2 === 0 ? "#1565C0" : "#D32F2F"}>
+                      {/* Rodilla izquierda */}
+                      <a-sphere position="0 -0.18 0" radius="0.05" color={index % 2 === 0 ? "#1565C0" : "#D32F2F"}></a-sphere>
+                    </a-box>
+                    {/* Pantorrilla izquierda */}
+                    <a-box position="0 -0.3 -0.2" width="0.06" height="0.3" depth="0.08" color={index % 2 === 0 ? "#0D47A1" : "#B71C1C"} rotation="90 0 0"></a-box>
+                  </a-entity>
+                </a-entity>
+              </a-entity>
+            )}
           </a-entity>
         ))}
 
