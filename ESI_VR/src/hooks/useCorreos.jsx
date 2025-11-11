@@ -21,9 +21,9 @@ function Correos() {
           correo: "1234@gmail.com"
         });
 
-        console.log("Correos agregados con éxito");
+        // Correos agregados exitosamente
       } catch (error) {
-        console.error("Error, no se pudieron agregar los correos.", error);
+        console.error("Error al agregar correos:", error);
       }
     };
 

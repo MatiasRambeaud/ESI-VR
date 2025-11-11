@@ -21,9 +21,9 @@ function Niveles() {
           nivel: 3
         });
 
-        console.log("Niveles agregados con éxito");
+        // Niveles agregados exitosamente
       } catch (error) {
-        console.error("Error, no se pudieron agregar los niveles.", error);
+        console.error("Error al agregar niveles:", error);
       }
     };
 

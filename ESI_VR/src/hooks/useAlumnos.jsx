@@ -24,9 +24,9 @@ function Alumnos() {
           curso: "3er grado"
         });
 
-        console.log("Alumnos agregados con éxito");
+        // Alumnos agregados exitosamente
       } catch (error) {
-        console.error("Error, no se pudieron agregar los alumnos.", error);
+        console.error("Error al agregar alumnos:", error);
       }
     };
 

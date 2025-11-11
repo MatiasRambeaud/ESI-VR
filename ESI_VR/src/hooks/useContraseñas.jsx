@@ -21,9 +21,9 @@ function Contraseñas() {
           contraseña: 12348765
         });
 
-        console.log("Contraseñas agregadas con éxito");
+        // Contraseñas agregadas exitosamente
       } catch (error) {
-        console.error("Error, no se pudieron agregar las contraseñas.", error);
+        console.error("Error al agregar contraseñas:", error);
       }
     };
 

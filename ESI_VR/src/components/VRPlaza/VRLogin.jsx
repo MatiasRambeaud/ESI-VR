@@ -18,29 +18,24 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
   useEffect(() => {
     // Event listeners para A-Frame
     const handleLoginClick = () => {
-      console.log('Botón start quiz clickeado');
       if (user) {
         onSelectLevel();
       }
     };
 
     const handleLogoutClick = async () => {
-      console.log('Botón logout clickeado');
       try {
         await signOut(auth);
       } catch (error) {
         console.error('Error al cerrar sesión:', error);
-        setError('Error al cerrar sesión');
       }
     };
 
     const handleHistorialClick = () => {
-      console.log('Botón historial clickeado');
       if (onHistorial) onHistorial();
     };
 
     const handleLeaderboardClick = () => {
-      console.log('Botón leaderboard clickeado');
       if (onLeaderboard) onLeaderboard();
     };
 
@@ -90,10 +85,9 @@ const VRLogin = ({ onSelectLevel, onBack, onProfile, onHistorial, onLeaderboard 
     try {
       setIsLoading(true);
       setError('');
-      const result = await signInWithPopup(auth, googleProvider);
+      await signInWithPopup(auth, googleProvider);
       // El usuario ha iniciado sesión correctamente
       // Firebase maneja la sesión automáticamente
-      console.log('Usuario autenticado con Google:', result.user);
     } catch (error) {
       console.error('Error al iniciar sesión con Google:', error);
       setError(error.message);

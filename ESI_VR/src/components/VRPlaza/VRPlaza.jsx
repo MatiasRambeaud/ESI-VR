@@ -117,6 +117,24 @@ export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCam
   const screenRef = useRef(null);
   const cameraRef = useRef(null);
   const posterImageRef = useRef(null);
+  // Array de imágenes de ejemplo (puedes reemplazarlas con tus propias imágenes)
+  const avatarImages = useMemo(() => [
+    process.env.PUBLIC_URL + '/caras/bochini.jpg',
+    process.env.PUBLIC_URL + '/caras/crackaddict.jpg',
+    process.env.PUBLIC_URL + '/caras/gustambo.jpg',
+    process.env.PUBLIC_URL + '/caras/jefe.jpg',
+    process.env.PUBLIC_URL + '/caras/niami.jpg',
+    process.env.PUBLIC_URL + '/caras/pedrini.jpg',
+    process.env.PUBLIC_URL + '/caras/polaca.jpg',
+    process.env.PUBLIC_URL + '/caras/pupilon.jpg',
+    process.env.PUBLIC_URL + '/caras/sigman.jpg',
+    process.env.PUBLIC_URL + '/caras/widi.jpg'
+  ], []);
+
+  // Función para obtener la URL de la imagen del personaje basado en el índice
+  const getAvatarUrl = (index) => {
+    return avatarImages[Math.abs(index) % avatarImages.length];
+  };
 
   const puestos = useMemo(() => {
     const columnas = [-4, -2, 0, 2, 4];
@@ -138,7 +156,6 @@ export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCam
     // Función para manejar el clic en la pantalla
     const handleScreenClick = (e) => {
       // Aquí puedes agregar lógica para manejar interacciones con la pantalla
-      console.log('Pantalla clickeada', e.detail.intersection.point);
     };
 
     // Agregar evento de clic a la pantalla
@@ -184,19 +201,19 @@ export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCam
     return () => {};
   }, [movementLocked]);
 
+  // Efecto para cargar la imagen del póster
   useEffect(() => {
-    const img = new window.Image();
-    img.src = process.env.PUBLIC_URL + '/download.png';
-    img.onload = () => {
-      const ratio = img.width / img.height;
-      const targetWidth = 4.2;
-      const computedHeight = targetWidth / ratio;
-      if (posterImageRef.current) {
-        posterImageRef.current.setAttribute('width', targetWidth);
-        posterImageRef.current.setAttribute('height', computedHeight);
-        posterImageRef.current.setAttribute('material', 'shader: flat; side: double; transparent: true; alphaTest: 0.01');
-      }
-    };
+    if (posterImageRef.current) {
+      // Configuración directa del material para el póster
+      posterImageRef.current.setAttribute('material', {
+        shader: 'flat',
+        side: 'double',
+        transparent: true,
+        alphaTest: 0.01,
+        width: 4.2,
+        height: 2.8  // Proporción común para pósters
+      });
+    }
   }, []);
 
   return (
@@ -311,15 +328,19 @@ export const VRPlaza = ({ children, onBack, onProfile, onSelectLevel, initialCam
                   depth="0.2"
                   color="#FFE0B2"
                 >
-                  {/* Espacio para la cara (puedes reemplazar la URL con la imagen de perfil) */}
-                  <a-plane 
-                    position="0 0 0.11" 
-                    width="0.22" 
-                    height="0.22" 
-                    color="#FFFFFF"
-                    src="https://via.placeholder.com/100"
-                    shader="flat"
-                  ></a-plane>
+                  {/* Espacio para la cara */}
+                  <a-entity
+                    position="0 0 0.11"
+                    geometry="primitive: plane; width: 0.22; height: 0.22"
+                  >
+                    <a-image
+                      src={getAvatarUrl(index)}
+                      width="0.22"
+                      height="0.22"
+                      position="0 0 0.01"
+                      shader="flat"
+                    ></a-image>
+                  </a-entity>
                 </a-box>
                 
                 {/* Cuerpo */}
